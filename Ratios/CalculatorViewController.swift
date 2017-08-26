@@ -10,131 +10,80 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
 
-    let totalLabel = UILabel()
-    let totalTextField = UITextField()
-    let waterLabel = UILabel()
-    let waterTextField = UITextField()
-    let groundsLabel = UILabel()
-    let groundsTextField = UITextField()
-    let ratioLabel = UILabel()
-    let ratioSelection = UITextField()
+    let totalInputView = LabelInputView(label: "TOTAL BREW (ML)", initialValue: "0")
+    let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
+    let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
+    let ratioInputView = LabelInputView(label: "RATIO", initialValue: "16")
 
-    var bottomConstraint: NSLayoutConstraint? = nil
-
+    var centerYConstraint: NSLayoutConstraint? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Calculator"
-        self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
+
+        self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
         let stackView = UIStackView(arrangedSubviews: [
-            self.totalLabel,
-            self.totalTextField,
-            self.waterLabel,
-            self.waterTextField,
-            self.groundsLabel,
-            self.groundsTextField,
-            self.ratioLabel,
-            self.ratioSelection
+            self.ratioInputView,
+            self.totalInputView,
+            self.groundsInputView,
+            self.waterInputView
         ])
+
         stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
+        stackView.spacing = 8
 
         self.view.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 8).isActive = true
+        stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
 
-        self.bottomConstraint = stackView.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor)
-        self.bottomConstraint?.isActive = true
-
-        self.totalLabel.text = "Total Brew"
-
-        self.totalTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
-        self.totalTextField.keyboardType = .decimalPad
-        self.totalTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.totalTextField.backgroundColor = .lightGray
-        self.totalTextField.layer.cornerRadius = 8
-
-        self.waterLabel.text = "Water"
-
-        self.waterTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
-        self.waterTextField.keyboardType = .decimalPad
-        self.waterTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.waterTextField.backgroundColor = .lightGray
-        self.waterTextField.layer.cornerRadius = 8
-
-        self.groundsLabel.text = "Grounds"
-
-        self.groundsTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
-        self.groundsTextField.keyboardType = .decimalPad
-        self.groundsTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.groundsTextField.backgroundColor = .lightGray
-        self.groundsTextField.layer.cornerRadius = 8
-
-        self.ratioLabel.text = "Ratio"
-
-        self.ratioSelection.text = "16:1"
-        self.ratioSelection.isEnabled = false
-        self.ratioSelection.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
-        self.ratioSelection.keyboardType = .decimalPad
-        self.ratioSelection.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.ratioSelection.backgroundColor = .lightGray
-        self.ratioSelection.layer.cornerRadius = 8
+        self.totalInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
+        self.waterInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
+        self.groundsInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
+        self.ratioInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: .main) { (notification) in
-            guard
-                let userInfo = notification.userInfo,
-                let endFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect,
-                let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
-                let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt
-            else {
-                return
-            }
-
-            self.bottomConstraint?.constant = -endFrame.height
-            self.view.setNeedsLayout()
-
-            UIView.animate(withDuration: animationDuration, delay: 0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
+        self.groundsInputView.textField.becomeFirstResponder()
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
-        let total = Double(self.totalTextField.text ?? "0") ?? 0
-        let water = Double(self.waterTextField.text ?? "0") ?? 0
-        let grounds = Double(self.groundsTextField.text ?? "0") ?? 0
-        let ratio = 16
+        let total = Double(self.totalInputView.textField.text ?? "0") ?? 0
+        let water = Double(self.waterInputView.textField.text ?? "0") ?? 0
+        let grounds = Double(self.groundsInputView.textField.text ?? "0") ?? 0
+        let ratio = Int(self.ratioInputView.textField.text ?? "16") ?? 16
 
         guard let field = sender as? UITextField else {
             return
         }
 
         switch field {
-        case self.totalTextField:
+        case self.totalInputView.textField:
             let newGrounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
-            self.groundsTextField.text = CalculatorViewController.formatDoubleToString(newGrounds)
+            let newWater = Calculator.calculateWater(grounds: newGrounds, ratio: ratio)
+            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(newGrounds)
+            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(newWater)
 
-        case self.waterTextField:
+        case self.waterInputView.textField:
             let newGrounds = Calculator.calculateGrounds(water: water, ratio: ratio)
             let newBrew = Calculator.calculateBrew(grounds: newGrounds, water: water)
-            self.groundsTextField.text = CalculatorViewController.formatDoubleToString(newGrounds)
-            self.totalTextField.text = CalculatorViewController.formatDoubleToString(newBrew)
+            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(newGrounds)
+            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(newBrew)
 
-        case self.groundsTextField:
+        case self.groundsInputView.textField, self.ratioInputView.textField:
             let newWater = Calculator.calculateWater(grounds: grounds, ratio: ratio)
             let newBrew = Calculator.calculateBrew(grounds: grounds, water: newWater)
-            self.waterTextField.text = CalculatorViewController.formatDoubleToString(newWater)
-            self.totalTextField.text = CalculatorViewController.formatDoubleToString(newBrew)
+            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(newWater)
+            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(newBrew)
 
         default:
             break

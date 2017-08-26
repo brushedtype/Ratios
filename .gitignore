@@ -1,5 +1,9 @@
 # Modified from https://www.gitignore.io/api/macos,xcode,swift
 
+### Ratios ###
+
+fonts/
+
 ### macOS ###
 
 *.DS_Store

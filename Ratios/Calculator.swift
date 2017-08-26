@@ -15,6 +15,7 @@ struct Calculator {
     }
 
     static func calculateGrounds(water: Double, ratio: Int) -> Double {
+        print(water, Double(ratio), water / Double(ratio))
         return water / Double(ratio)
     }
 

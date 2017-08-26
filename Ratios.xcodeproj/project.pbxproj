@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */; };
+		BC57D88B1F52042A00A4ED41 /* Tofino-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87B1F5203F600A4ED41 /* Tofino-Black.otf */; };
+		BC57D88C1F52042A00A4ED41 /* Tofino-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87E1F5203F600A4ED41 /* Tofino-BlackItalic.otf */; };
+		BC57D88D1F52042A00A4ED41 /* Tofino-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8801F5203F600A4ED41 /* Tofino-Bold.otf */; };
+		BC57D88E1F52042A00A4ED41 /* Tofino-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8881F5203F700A4ED41 /* Tofino-BoldItalic.otf */; };
+		BC57D88F1F52042A00A4ED41 /* Tofino-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8891F5203F700A4ED41 /* Tofino-Book.otf */; };
+		BC57D8901F52042A00A4ED41 /* Tofino-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87A1F5203F600A4ED41 /* Tofino-BookItalic.otf */; };
+		BC57D8911F52042A00A4ED41 /* Tofino-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8811F5203F600A4ED41 /* Tofino-Light.otf */; };
+		BC57D8921F52042A00A4ED41 /* Tofino-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8851F5203F600A4ED41 /* Tofino-LightItalic.otf */; };
+		BC57D8931F52042A00A4ED41 /* Tofino-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8831F5203F600A4ED41 /* Tofino-Medium.otf */; };
+		BC57D8941F52042A00A4ED41 /* Tofino-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87D1F5203F600A4ED41 /* Tofino-MediumItalic.otf */; };
+		BC57D8951F52042A00A4ED41 /* Tofino-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8871F5203F700A4ED41 /* Tofino-Regular.otf */; };
+		BC57D8961F52042A00A4ED41 /* Tofino-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8821F5203F600A4ED41 /* Tofino-RegularItalic.otf */; };
+		BC57D8971F52042A00A4ED41 /* Tofino-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D88A1F5203F700A4ED41 /* Tofino-Thin.otf */; };
+		BC57D8981F52042A00A4ED41 /* Tofino-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87C1F5203F600A4ED41 /* Tofino-ThinItalic.otf */; };
+		BC57D8991F52042A00A4ED41 /* Tofino-Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8841F5203F600A4ED41 /* Tofino-Ultra.otf */; };
+		BC57D89A1F52042A00A4ED41 /* Tofino-UltraItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87F1F5203F600A4ED41 /* Tofino-UltraItalic.otf */; };
 		BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6739E31E23BDEC005399BF /* AppDelegate.swift */; };
 		BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */; };
 		BC6739EB1E23BDEC005399BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6739EA1E23BDEC005399BF /* Assets.xcassets */; };
@@ -15,6 +32,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelInputView.swift; sourceTree = "<group>"; };
+		BC57D87A1F5203F600A4ED41 /* Tofino-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-BookItalic.otf"; sourceTree = "<group>"; };
+		BC57D87B1F5203F600A4ED41 /* Tofino-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Black.otf"; sourceTree = "<group>"; };
+		BC57D87C1F5203F600A4ED41 /* Tofino-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-ThinItalic.otf"; sourceTree = "<group>"; };
+		BC57D87D1F5203F600A4ED41 /* Tofino-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-MediumItalic.otf"; sourceTree = "<group>"; };
+		BC57D87E1F5203F600A4ED41 /* Tofino-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-BlackItalic.otf"; sourceTree = "<group>"; };
+		BC57D87F1F5203F600A4ED41 /* Tofino-UltraItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-UltraItalic.otf"; sourceTree = "<group>"; };
+		BC57D8801F5203F600A4ED41 /* Tofino-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Bold.otf"; sourceTree = "<group>"; };
+		BC57D8811F5203F600A4ED41 /* Tofino-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Light.otf"; sourceTree = "<group>"; };
+		BC57D8821F5203F600A4ED41 /* Tofino-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-RegularItalic.otf"; sourceTree = "<group>"; };
+		BC57D8831F5203F600A4ED41 /* Tofino-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Medium.otf"; sourceTree = "<group>"; };
+		BC57D8841F5203F600A4ED41 /* Tofino-Ultra.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Ultra.otf"; sourceTree = "<group>"; };
+		BC57D8851F5203F600A4ED41 /* Tofino-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-LightItalic.otf"; sourceTree = "<group>"; };
+		BC57D8861F5203F600A4ED41 /* Tofino_Personal_License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tofino_Personal_License.pdf; sourceTree = "<group>"; };
+		BC57D8871F5203F700A4ED41 /* Tofino-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Regular.otf"; sourceTree = "<group>"; };
+		BC57D8881F5203F700A4ED41 /* Tofino-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-BoldItalic.otf"; sourceTree = "<group>"; };
+		BC57D8891F5203F700A4ED41 /* Tofino-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Book.otf"; sourceTree = "<group>"; };
+		BC57D88A1F5203F700A4ED41 /* Tofino-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Thin.otf"; sourceTree = "<group>"; };
 		BC6739E01E23BDEC005399BF /* Ratios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6739E31E23BDEC005399BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +70,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC57D8671F5203C500A4ED41 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BC57D8681F5203CC00A4ED41 /* Tofino */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BC57D8681F5203CC00A4ED41 /* Tofino */ = {
+			isa = PBXGroup;
+			children = (
+				BC57D8861F5203F600A4ED41 /* Tofino_Personal_License.pdf */,
+				BC57D87B1F5203F600A4ED41 /* Tofino-Black.otf */,
+				BC57D87E1F5203F600A4ED41 /* Tofino-BlackItalic.otf */,
+				BC57D8801F5203F600A4ED41 /* Tofino-Bold.otf */,
+				BC57D8881F5203F700A4ED41 /* Tofino-BoldItalic.otf */,
+				BC57D8891F5203F700A4ED41 /* Tofino-Book.otf */,
+				BC57D87A1F5203F600A4ED41 /* Tofino-BookItalic.otf */,
+				BC57D8811F5203F600A4ED41 /* Tofino-Light.otf */,
+				BC57D8851F5203F600A4ED41 /* Tofino-LightItalic.otf */,
+				BC57D8831F5203F600A4ED41 /* Tofino-Medium.otf */,
+				BC57D87D1F5203F600A4ED41 /* Tofino-MediumItalic.otf */,
+				BC57D8871F5203F700A4ED41 /* Tofino-Regular.otf */,
+				BC57D8821F5203F600A4ED41 /* Tofino-RegularItalic.otf */,
+				BC57D88A1F5203F700A4ED41 /* Tofino-Thin.otf */,
+				BC57D87C1F5203F600A4ED41 /* Tofino-ThinItalic.otf */,
+				BC57D8841F5203F600A4ED41 /* Tofino-Ultra.otf */,
+				BC57D87F1F5203F600A4ED41 /* Tofino-UltraItalic.otf */,
+			);
+			path = Tofino;
+			sourceTree = "<group>";
+		};
 		BC6739D71E23BDEC005399BF = {
 			isa = PBXGroup;
 			children = (
@@ -57,9 +124,11 @@
 				BC6739E31E23BDEC005399BF /* AppDelegate.swift */,
 				BC8A674E1F519E8400A7E627 /* Calculator.swift */,
 				BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */,
+				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
 				BC6739EA1E23BDEC005399BF /* Assets.xcassets */,
 				BC6739EC1E23BDEC005399BF /* LaunchScreen.storyboard */,
 				BC6739EF1E23BDEC005399BF /* Info.plist */,
+				BC57D8671F5203C500A4ED41 /* Fonts */,
 			);
 			path = Ratios;
 			sourceTree = "<group>";
@@ -125,6 +194,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC57D88B1F52042A00A4ED41 /* Tofino-Black.otf in Resources */,
+				BC57D88C1F52042A00A4ED41 /* Tofino-BlackItalic.otf in Resources */,
+				BC57D88D1F52042A00A4ED41 /* Tofino-Bold.otf in Resources */,
+				BC57D88E1F52042A00A4ED41 /* Tofino-BoldItalic.otf in Resources */,
+				BC57D88F1F52042A00A4ED41 /* Tofino-Book.otf in Resources */,
+				BC57D8901F52042A00A4ED41 /* Tofino-BookItalic.otf in Resources */,
+				BC57D8911F52042A00A4ED41 /* Tofino-Light.otf in Resources */,
+				BC57D8921F52042A00A4ED41 /* Tofino-LightItalic.otf in Resources */,
+				BC57D8931F52042A00A4ED41 /* Tofino-Medium.otf in Resources */,
+				BC57D8941F52042A00A4ED41 /* Tofino-MediumItalic.otf in Resources */,
+				BC57D8951F52042A00A4ED41 /* Tofino-Regular.otf in Resources */,
+				BC57D8961F52042A00A4ED41 /* Tofino-RegularItalic.otf in Resources */,
+				BC57D8971F52042A00A4ED41 /* Tofino-Thin.otf in Resources */,
+				BC57D8981F52042A00A4ED41 /* Tofino-ThinItalic.otf in Resources */,
+				BC57D8991F52042A00A4ED41 /* Tofino-Ultra.otf in Resources */,
+				BC57D89A1F52042A00A4ED41 /* Tofino-UltraItalic.otf in Resources */,
 				BC6739EE1E23BDEC005399BF /* LaunchScreen.storyboard in Resources */,
 				BC6739EB1E23BDEC005399BF /* Assets.xcassets in Resources */,
 			);
@@ -139,6 +224,7 @@
 			files = (
 				BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */,
 				BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */,
+				BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */,
 				BC8A674F1F519E8400A7E627 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
