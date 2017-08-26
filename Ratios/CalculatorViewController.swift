@@ -12,6 +12,8 @@ class CalculatorViewController: UIViewController {
 
     var persistenceStore: PersistenceStore?
 
+    let keyboardViewController = KeyboardViewController()
+
     let totalInputView = LabelInputView(label: "TOTAL BREW (ML)", initialValue: "0")
     let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
     let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
@@ -62,12 +64,23 @@ class CalculatorViewController: UIViewController {
             self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
             self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(brew)
         }
+
+
+        guard let keyboardView = self.keyboardViewController.view else {
+            return
+        }
+
+        self.view.addSubview(keyboardView)
+
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.groundsInputView.textField.becomeFirstResponder()
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {

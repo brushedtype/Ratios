@@ -25,6 +25,7 @@
 		BC57D8991F52042A00A4ED41 /* Tofino-Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D8841F5203F600A4ED41 /* Tofino-Ultra.otf */; };
 		BC57D89A1F52042A00A4ED41 /* Tofino-UltraItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87F1F5203F600A4ED41 /* Tofino-UltraItalic.otf */; };
 		BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */; };
+		BC57D89D1F522F9E00A4ED41 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D89C1F522F9E00A4ED41 /* KeyboardViewController.swift */; };
 		BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6739E31E23BDEC005399BF /* AppDelegate.swift */; };
 		BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */; };
 		BC6739EB1E23BDEC005399BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6739EA1E23BDEC005399BF /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		BC57D8891F5203F700A4ED41 /* Tofino-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Book.otf"; sourceTree = "<group>"; };
 		BC57D88A1F5203F700A4ED41 /* Tofino-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-Thin.otf"; sourceTree = "<group>"; };
 		BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		BC57D89C1F522F9E00A4ED41 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		BC6739E01E23BDEC005399BF /* Ratios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6739E31E23BDEC005399BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				BC8A674E1F519E8400A7E627 /* Calculator.swift */,
 				BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */,
 				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
+				BC57D89C1F522F9E00A4ED41 /* KeyboardViewController.swift */,
 				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
 				BC57D8671F5203C500A4ED41 /* Fonts */,
 				BC6739EA1E23BDEC005399BF /* Assets.xcassets */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */,
+				BC57D89D1F522F9E00A4ED41 /* KeyboardViewController.swift in Sources */,
 				BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */,
 				BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */,
 				BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */,
