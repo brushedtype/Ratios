@@ -16,7 +16,7 @@ fileprivate let largeFont = UIFontMetrics.default.scaledFont(for: UIFont(descrip
 fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
 
 
-class LabelInputView: UIView {
+class LabelInputView: UIView, UITextFieldDelegate {
 
     let labelView = UILabel()
     let textField = UITextField()
@@ -48,10 +48,10 @@ class LabelInputView: UIView {
 
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leftAnchor.constraintEqualToSystemSpacingAfter(self.leftAnchor, multiplier: 1).isActive = true
-        stackView.topAnchor.constraintEqualToSystemSpacingBelow(self.topAnchor, multiplier: 1).isActive = true
-        self.rightAnchor.constraintEqualToSystemSpacingAfter(stackView.rightAnchor, multiplier: 1).isActive = true
-        self.bottomAnchor.constraintEqualToSystemSpacingBelow(stackView.bottomAnchor, multiplier: 1).isActive = true
+        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
     }
 
     required init(coder: NSCoder) {
