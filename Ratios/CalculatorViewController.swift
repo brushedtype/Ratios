@@ -54,7 +54,6 @@ class CalculatorViewController: UIViewController {
 
         self.totalLabel.text = "Total Brew"
 
-        self.totalTextField.text = "0.0"
         self.totalTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
         self.totalTextField.keyboardType = .decimalPad
         self.totalTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
@@ -63,7 +62,6 @@ class CalculatorViewController: UIViewController {
 
         self.waterLabel.text = "Water"
 
-        self.waterTextField.text = "0.0"
         self.waterTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
         self.waterTextField.keyboardType = .decimalPad
         self.waterTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
@@ -72,7 +70,6 @@ class CalculatorViewController: UIViewController {
 
         self.groundsLabel.text = "Grounds"
 
-        self.groundsTextField.text = "0.0"
         self.groundsTextField.font = UIFont.monospacedDigitSystemFont(ofSize: 45, weight: .regular)
         self.groundsTextField.keyboardType = .decimalPad
         self.groundsTextField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
@@ -125,23 +122,31 @@ class CalculatorViewController: UIViewController {
         switch field {
         case self.totalTextField:
             let newGrounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
-            self.groundsTextField.text = String(newGrounds)
+            self.groundsTextField.text = CalculatorViewController.formatDoubleToString(newGrounds)
 
         case self.waterTextField:
             let newGrounds = Calculator.calculateGrounds(water: water, ratio: ratio)
             let newBrew = Calculator.calculateBrew(grounds: newGrounds, water: water)
-            self.groundsTextField.text = String(newGrounds)
-            self.totalTextField.text = String(newBrew)
+            self.groundsTextField.text = CalculatorViewController.formatDoubleToString(newGrounds)
+            self.totalTextField.text = CalculatorViewController.formatDoubleToString(newBrew)
 
         case self.groundsTextField:
             let newWater = Calculator.calculateWater(grounds: grounds, ratio: ratio)
             let newBrew = Calculator.calculateBrew(grounds: grounds, water: newWater)
-            self.waterTextField.text = String(newWater)
-            self.totalTextField.text = String(newBrew)
+            self.waterTextField.text = CalculatorViewController.formatDoubleToString(newWater)
+            self.totalTextField.text = CalculatorViewController.formatDoubleToString(newBrew)
 
         default:
             break
         }
+    }
+
+    static func formatDoubleToString(_ value: Double) -> String? {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 0
+
+        return formatter.string(from: NSNumber(value: value))
     }
 
 }
