@@ -10,12 +10,15 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
 
+    var persistenceStore: PersistenceStore?
+
     let totalInputView = LabelInputView(label: "TOTAL BREW (ML)", initialValue: "0")
     let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
     let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
     let ratioInputView = LabelInputView(label: "RATIO", initialValue: "16")
 
     var centerYConstraint: NSLayoutConstraint? = nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,17 @@ class CalculatorViewController: UIViewController {
         self.waterInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
         self.groundsInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
         self.ratioInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
+
+        if let values = self.persistenceStore?.getValues() {
+            let water = Calculator.calculateWater(grounds: values.grounds, ratio: values.ratio)
+            let brew = Calculator.calculateBrew(grounds: values.grounds, water: water)
+
+            self.ratioInputView.textField.text = String(values.ratio)
+            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(values.grounds)
+
+            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
+            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(brew)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -61,6 +75,8 @@ class CalculatorViewController: UIViewController {
         let water = Double(self.waterInputView.textField.text ?? "0") ?? 0
         let grounds = Double(self.groundsInputView.textField.text ?? "0") ?? 0
         let ratio = Int(self.ratioInputView.textField.text ?? "16") ?? 16
+
+        self.persistenceStore?.save(grounds: grounds, ratio: ratio)
 
         guard let field = sender as? UITextField else {
             return

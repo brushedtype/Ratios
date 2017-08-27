@@ -15,8 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let calculatorViewController = CalculatorViewController()
+        calculatorViewController.persistenceStore = UserDefaults.standard
+
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = UINavigationController(rootViewController: CalculatorViewController())
+        self.window?.rootViewController = UINavigationController(rootViewController: calculatorViewController)
         self.window?.makeKeyAndVisible()
 
         return true
