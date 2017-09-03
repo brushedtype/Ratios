@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
 fileprivate let mediumWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium ]
 
@@ -19,7 +18,7 @@ fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .tr
 class LabelInputView: UIView, UITextFieldDelegate {
 
     let labelView = UILabel()
-    let textField = UITextField()
+    let textField = InputTextField()
 
     init(label: String, initialValue: String? = nil) {
         super.init(frame: .zero)
@@ -53,6 +52,8 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: 72).isActive = true
+
+        self.textField.inputView = self.textField.inputViewController?.view
     }
 
     required init(coder: NSCoder) {

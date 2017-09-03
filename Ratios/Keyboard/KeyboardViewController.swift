@@ -8,31 +8,9 @@
 
 import UIKit
 
-class KeyboardSection: UIStackView {
+class KeyboardViewController: UIInputViewController {
 
-    private static func emptyView() -> UIView {
-        return UIView(frame: .zero)
-    }
-
-    convenience init(sectionSubviews: [UIView], direction: UILayoutConstraintAxis) {
-        self.init(frame: .zero)
-        self.alignment = .fill
-        self.distribution = .fillEqually
-        self.axis = direction
-        self.spacing = 4
-
-//        self.addArrangedSubview(KeyboardSection.emptyView())
-
-        for view in sectionSubviews {
-            self.addArrangedSubview(view)
-        }
-
-//        self.addArrangedSubview(KeyboardSection.emptyView())
-    }
-
-}
-
-class KeyboardViewController: UIViewController {
+    static let shared = KeyboardViewController()
 
     let rows = [
         ["1", "2", "3"],
@@ -41,13 +19,42 @@ class KeyboardViewController: UIViewController {
         [".", "0", "<"]
     ]
 
-    override func loadView() {
-        let keyboardRows = self.rows.map { (values) -> UIView in
-            let buttons = values.map({ KeyboardButton(buttonValue: $0) })
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = .white
+
+        let keys = KeyboardSection(sectionSubviews: self.rows.map { (values) -> UIView in
+            let buttons = values.map({ buttonValue -> KeyboardButton in
+                let button = KeyboardButton(buttonValue: buttonValue)
+                button.addTarget(self, action: #selector(self.handleKeyPress(_:)), for: .touchUpInside)
+                return button
+            })
             return KeyboardSection(sectionSubviews: buttons, direction: .horizontal)
+        }, direction: .vertical)
+
+        self.view.addSubview(keys)
+        keys.translatesAutoresizingMaskIntoConstraints = false
+        keys.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+        keys.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
+        keys.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+        keys.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    @objc func handleKeyPress(_ sender: AnyObject) {
+        print("key pressed")
+
+        guard let button = sender as? KeyboardButton, let buttonValue = button.value else {
+            return
         }
 
-        self.view = KeyboardSection(sectionSubviews: keyboardRows, direction: .vertical)
+        if buttonValue == "<" {
+            self.textDocumentProxy.deleteBackward()
+        } else {
+            self.textDocumentProxy.insertText(buttonValue)
+        }
     }
 
 }

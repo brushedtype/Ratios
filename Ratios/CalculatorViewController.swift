@@ -19,12 +19,10 @@ class CalculatorViewController: UIViewController {
 
     var persistenceStore: PersistenceStore?
 
-    let keyboardViewController = KeyboardViewController()
-
-    let totalInputView = LabelInputView(label: "TOTAL BREW (ML)", initialValue: "0")
+    let ratioInputView = LabelInputView(label: "RATIO", initialValue: "16")
+    let totalInputView = LabelInputView(label: "TOTAL BREW (ML)", initialValue: "315")
     let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
     let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
-    let ratioInputView = LabelInputView(label: "RATIO", initialValue: "16")
 
     var centerYConstraint: NSLayoutConstraint? = nil
 
@@ -80,24 +78,12 @@ class CalculatorViewController: UIViewController {
             self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
             self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(brew)
         }
-
-
-        guard let keyboardView = self.keyboardViewController.view else {
-            return
-        }
-
-        self.view.addSubview(keyboardView)
-
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
-        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        keyboardView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16).isActive = true
-        keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        self.totalInputView.textField.becomeFirstResponder()
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {

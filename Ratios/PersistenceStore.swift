@@ -18,7 +18,6 @@ extension UserDefaults: PersistenceStore {
     private static let ratiosPersistenceGroundsKey = "co.brushedtype.ratios.grounds"
     private static let ratiosPersistenceRatioKey = "co.brushedtype.ratios.ratio"
 
-
     func save(grounds: Double, ratio: Int) {
         self.set(grounds, forKey: UserDefaults.ratiosPersistenceGroundsKey)
         self.set(ratio, forKey: UserDefaults.ratiosPersistenceRatioKey)
