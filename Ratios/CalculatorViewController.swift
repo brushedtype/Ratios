@@ -8,6 +8,13 @@
 
 import UIKit
 
+fileprivate struct Actions {
+    private init() {}
+
+    static let handleSettingsButtonPress = #selector(CalculatorViewController.handleSettingsButtonPress(_:))
+    static let handleFieldValueChange = #selector(CalculatorViewController.handleFieldValueChange(_:))
+}
+
 class CalculatorViewController: UIViewController {
 
     var persistenceStore: PersistenceStore?
@@ -26,21 +33,31 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Calculator"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: Actions.handleSettingsButtonPress)
         self.navigationController?.isNavigationBarHidden = true
 
         self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
-        let stackView = UIStackView(arrangedSubviews: [
+        let topView = UIStackView(arrangedSubviews: [
             self.ratioInputView,
-            self.totalInputView,
+            self.totalInputView
+        ])
+
+        topView.alignment = .fill
+        topView.axis = .horizontal
+        topView.distribution = .fillEqually
+        topView.spacing = 4
+
+        let stackView = UIStackView(arrangedSubviews: [
+            topView,
             self.groundsInputView,
             self.waterInputView
         ])
 
         stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.distribution = .equalCentering
-        stackView.spacing = 8
+        stackView.distribution = .fillEqually
+        stackView.spacing = 4
 
         self.view.addSubview(stackView)
 
@@ -49,10 +66,10 @@ class CalculatorViewController: UIViewController {
         stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
 
-        self.totalInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.waterInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.groundsInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
-        self.ratioInputView.textField.addTarget(self, action: #selector(self.handleFieldValueChange), for: .editingChanged)
+        self.totalInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
+        self.waterInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
+        self.groundsInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
+        self.ratioInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
 
         if let values = self.persistenceStore?.getValues() {
             let water = Calculator.calculateWater(grounds: values.grounds, ratio: values.ratio)
@@ -60,7 +77,6 @@ class CalculatorViewController: UIViewController {
 
             self.ratioInputView.textField.text = String(values.ratio)
             self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(values.grounds)
-
             self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
             self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(brew)
         }
@@ -73,9 +89,10 @@ class CalculatorViewController: UIViewController {
         self.view.addSubview(keyboardView)
 
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
+        keyboardView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16).isActive = true
+        keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +134,10 @@ class CalculatorViewController: UIViewController {
         default:
             break
         }
+    }
+
+    @objc func handleSettingsButtonPress(_ sender: AnyObject) {
+
     }
 
     static func formatDoubleToString(_ value: Double) -> String? {

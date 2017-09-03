@@ -52,6 +52,7 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 72).isActive = true
     }
 
     required init(coder: NSCoder) {
