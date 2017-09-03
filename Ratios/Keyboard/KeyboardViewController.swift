@@ -43,9 +43,7 @@ class KeyboardViewController: UIInputViewController {
         self.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    @objc func handleKeyPress(_ sender: AnyObject) {
-        print("key pressed")
-
+    @objc func handleKeyPress(_ sender: AnyObject?) {
         guard let button = sender as? KeyboardButton, let buttonValue = button.value else {
             return
         }

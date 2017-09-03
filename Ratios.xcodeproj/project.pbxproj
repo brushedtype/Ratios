@@ -34,6 +34,7 @@
 		BC98F3891F5B179500F6E1D4 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */; };
 		BC98F38B1F5C7BA900F6E1D4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */; };
 		BC98F38D1F5C7BD800F6E1D4 /* KeyboardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38C1F5C7BD800F6E1D4 /* KeyboardSection.swift */; };
+		BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		BC98F38C1F5C7BD800F6E1D4 /* KeyboardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSection.swift; sourceTree = "<group>"; };
+		BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
 				BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */,
 				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
+				BC98F38E1F5CA36F00F6E1D4 /* Settings */,
 				BC98F3871F5B177900F6E1D4 /* Keyboard */,
 				BC57D8671F5203C500A4ED41 /* Fonts */,
 				BC6739EA1E23BDEC005399BF /* Assets.xcassets */,
@@ -154,6 +157,14 @@
 				BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */,
 			);
 			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		BC98F38E1F5CA36F00F6E1D4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +259,7 @@
 				BC98F38B1F5C7BA900F6E1D4 /* InputTextField.swift in Sources */,
 				BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */,
 				BC98F3891F5B179500F6E1D4 /* KeyboardButton.swift in Sources */,
+				BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */,
 				BC57D89D1F522F9E00A4ED41 /* KeyboardViewController.swift in Sources */,
 				BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */,
 				BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */,

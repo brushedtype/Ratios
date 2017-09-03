@@ -46,16 +46,20 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
         self.layer.cornerRadius = 5
     }
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.backgroundColor = self.activeBackgroundColor
-//
-//        UIDevice.current.playInputClick()
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        UIView.animate(withDuration: 0.125) {
-//            self.backgroundColor = self.normalBackgroundColor
-//        }
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        self.backgroundColor = self.activeBackgroundColor
+
+        UIDevice.current.playInputClick()
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+        UIView.animate(withDuration: 0.125) {
+            self.backgroundColor = self.normalBackgroundColor
+        }
+    }
 
 }

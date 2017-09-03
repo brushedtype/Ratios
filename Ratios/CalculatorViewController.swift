@@ -15,6 +15,14 @@ fileprivate struct Actions {
     static let handleFieldValueChange = #selector(CalculatorViewController.handleFieldValueChange(_:))
 }
 
+fileprivate func formatDoubleToString(_ value: Double) -> String? {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 0
+
+    return formatter.string(from: NSNumber(value: value))
+}
+
 class CalculatorViewController: UIViewController {
 
     var persistenceStore: PersistenceStore?
@@ -32,7 +40,6 @@ class CalculatorViewController: UIViewController {
 
         self.title = "Calculator"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: Actions.handleSettingsButtonPress)
-        self.navigationController?.isNavigationBarHidden = true
 
         self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
@@ -74,9 +81,9 @@ class CalculatorViewController: UIViewController {
             let brew = Calculator.calculateBrew(grounds: values.grounds, water: water)
 
             self.ratioInputView.textField.text = String(values.ratio)
-            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(values.grounds)
-            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
-            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(brew)
+            self.groundsInputView.textField.text = formatDoubleToString(values.grounds)
+            self.waterInputView.textField.text = formatDoubleToString(water)
+            self.totalInputView.textField.text = formatDoubleToString(brew)
         }
     }
 
@@ -113,23 +120,16 @@ class CalculatorViewController: UIViewController {
             break
         }
 
-        self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(grounds)
-        self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
-        self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(total)
+        self.groundsInputView.textField.text = formatDoubleToString(grounds)
+        self.waterInputView.textField.text = formatDoubleToString(water)
+        self.totalInputView.textField.text = formatDoubleToString(total)
 
         self.persistenceStore?.save(grounds: grounds, ratio: ratio)
     }
 
-    @objc func handleSettingsButtonPress(_ sender: AnyObject) {
-
-    }
-
-    static func formatDoubleToString(_ value: Double) -> String? {
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 0
-
-        return formatter.string(from: NSNumber(value: value))
+    @objc func handleSettingsButtonPress(_ sender: AnyObject?) {
+        let settingsViewController = SettingsViewController()
+        self.present(UINavigationController(rootViewController: settingsViewController), animated: true, completion: nil)
     }
 
 }
