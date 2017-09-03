@@ -87,12 +87,10 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
-        let total = Double(self.totalInputView.textField.text ?? "0") ?? 0
-        let water = Double(self.waterInputView.textField.text ?? "0") ?? 0
-        let grounds = Double(self.groundsInputView.textField.text ?? "0") ?? 0
         let ratio = Int(self.ratioInputView.textField.text ?? "16") ?? 16
-
-        self.persistenceStore?.save(grounds: grounds, ratio: ratio)
+        var total = Double(self.totalInputView.textField.text ?? "0") ?? 0
+        var water = Double(self.waterInputView.textField.text ?? "0") ?? 0
+        var grounds = Double(self.groundsInputView.textField.text ?? "0") ?? 0
 
         guard let field = sender as? UITextField else {
             return
@@ -100,26 +98,26 @@ class CalculatorViewController: UIViewController {
 
         switch field {
         case self.totalInputView.textField:
-            let newGrounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
-            let newWater = Calculator.calculateWater(grounds: newGrounds, ratio: ratio)
-            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(newGrounds)
-            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(newWater)
+            grounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
+            water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
 
         case self.waterInputView.textField:
-            let newGrounds = Calculator.calculateGrounds(water: water, ratio: ratio)
-            let newBrew = Calculator.calculateBrew(grounds: newGrounds, water: water)
-            self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(newGrounds)
-            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(newBrew)
+            grounds = Calculator.calculateGrounds(water: water, ratio: ratio)
+            total = Calculator.calculateBrew(grounds: grounds, water: water)
 
         case self.groundsInputView.textField, self.ratioInputView.textField:
-            let newWater = Calculator.calculateWater(grounds: grounds, ratio: ratio)
-            let newBrew = Calculator.calculateBrew(grounds: grounds, water: newWater)
-            self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(newWater)
-            self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(newBrew)
+            water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
+            total = Calculator.calculateBrew(grounds: grounds, water: water)
 
         default:
             break
         }
+
+        self.groundsInputView.textField.text = CalculatorViewController.formatDoubleToString(grounds)
+        self.waterInputView.textField.text = CalculatorViewController.formatDoubleToString(water)
+        self.totalInputView.textField.text = CalculatorViewController.formatDoubleToString(total)
+
+        self.persistenceStore?.save(grounds: grounds, ratio: ratio)
     }
 
     @objc func handleSettingsButtonPress(_ sender: AnyObject) {
