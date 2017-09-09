@@ -23,9 +23,10 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
 
     private(set) var value: String? = nil
 
-    var normalBackgroundColor = UIColor(red:0.72, green:0.65, blue:0.58, alpha:1.0)
+    var normalBackgroundColor = UIColor.white
     var activeBackgroundColor = UIColor(red:0.60, green:0.53, blue:0.46, alpha:1.0)
 
+    let shadowLayer = ShadowLayer()
 
     convenience init(buttonValue: String) {
         self.init(type: .custom)
@@ -33,7 +34,6 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
         self.setTitle(buttonValue, for: .normal)
         self.setTitleColor(UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0), for: .normal)
         self.backgroundColor = self.normalBackgroundColor
-        self.contentHorizontalAlignment = .center
 
         self.setAttributedTitle(NSAttributedString(string: buttonValue, attributes: [
             .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 22),
@@ -44,6 +44,14 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
         self.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
 
         self.layer.cornerRadius = 5
+        self.layer.masksToBounds = false
+        self.layer.insertSublayer(self.shadowLayer, at: 0)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

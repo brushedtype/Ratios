@@ -128,11 +128,11 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleSettingsButtonPress(_ sender: AnyObject?) {
-        let settingsViewController = SettingsViewController()
-        let settingsNavigationController = SettingsNavigationController(rootViewController: settingsViewController)
-        settingsNavigationController.transitioningDelegate = settingsNavigationController
+        let settingsViewController = SettingsViewController(style: .grouped)
+        let navigationController = NavigationController(rootViewController: settingsViewController)
+        navigationController.transitioningDelegate = navigationController
 
-        self.present(settingsNavigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
 }

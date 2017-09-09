@@ -23,7 +23,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.350
+        return 0.450
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -61,6 +61,12 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.containerView.addSubview(snapshotView)
         }
 
+        let shadowLayer = ShadowLayer()
+        shadowLayer.path = UIBezierPath(roundedRect: toVC.view.bounds, cornerRadius: 8).cgPath
+        let shadowView = UIView(frame: toVC.view.frame)
+        shadowView.layer.insertSublayer(shadowLayer, at: 0)
+
+        transitionContext.containerView.addSubview(shadowView)
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.bringSubview(toFront: toVC.view)
 
@@ -69,6 +75,8 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         }
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 5, options: [], animations: {
+            shadowView.alpha = 1
+            shadowView.frame = entryFrame
             toVC.view.alpha = 1
             toVC.view.frame = entryFrame
         }) { isComplete in

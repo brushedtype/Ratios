@@ -19,6 +19,8 @@ class LabelInputView: UIView, UITextFieldDelegate {
 
     let labelView = UILabel()
     let textField = InputTextField()
+    let shadowLayer = ShadowLayer()
+
 
     init(label: String, initialValue: String? = nil) {
         super.init(frame: .zero)
@@ -54,10 +56,18 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.heightAnchor.constraint(equalToConstant: 72).isActive = true
 
         self.textField.inputView = self.textField.inputViewController?.view
+
+        self.layer.insertSublayer(self.shadowLayer, at: 0)
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
 
 }

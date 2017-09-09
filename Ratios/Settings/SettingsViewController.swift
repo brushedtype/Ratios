@@ -14,13 +14,18 @@ fileprivate struct Actions {
     static let handleCloseButtonPress = #selector(SettingsViewController.handleCloseButtonPress(_:))
 }
 
-class SettingsViewController: UIViewController {
+fileprivate struct TableViewSection {
+    let items: [String]
+}
+
+class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Settings"
-        self.view.backgroundColor = .white
+
+        self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: Actions.handleCloseButtonPress)
     }
