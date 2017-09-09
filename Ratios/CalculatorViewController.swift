@@ -107,22 +107,24 @@ class CalculatorViewController: UIViewController {
         case self.totalInputView.textField:
             grounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
             water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
+            self.groundsInputView.textField.text = formatDoubleToString(grounds)
+            self.waterInputView.textField.text = formatDoubleToString(water)
 
         case self.waterInputView.textField:
             grounds = Calculator.calculateGrounds(water: water, ratio: ratio)
             total = Calculator.calculateBrew(grounds: grounds, water: water)
+            self.groundsInputView.textField.text = formatDoubleToString(grounds)
+            self.totalInputView.textField.text = formatDoubleToString(total)
 
         case self.groundsInputView.textField, self.ratioInputView.textField:
             water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
             total = Calculator.calculateBrew(grounds: grounds, water: water)
+            self.waterInputView.textField.text = formatDoubleToString(water)
+            self.totalInputView.textField.text = formatDoubleToString(total)
 
         default:
             break
         }
-
-        self.groundsInputView.textField.text = formatDoubleToString(grounds)
-        self.waterInputView.textField.text = formatDoubleToString(water)
-        self.totalInputView.textField.text = formatDoubleToString(total)
 
         self.persistenceStore?.save(grounds: grounds, ratio: ratio)
     }
