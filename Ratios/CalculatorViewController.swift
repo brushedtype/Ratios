@@ -130,11 +130,18 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleSettingsButtonPress(_ sender: AnyObject?) {
-        let settingsViewController = SettingsViewController(style: .grouped)
-        let navigationController = NavigationController(rootViewController: settingsViewController)
-        navigationController.transitioningDelegate = navigationController
+        self.ratioInputView.textField.resignFirstResponder()
+        self.totalInputView.textField.resignFirstResponder()
+        self.groundsInputView.textField.resignFirstResponder()
+        self.waterInputView.textField.resignFirstResponder()
 
-        self.present(navigationController, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let settingsViewController = SettingsViewController(style: .grouped)
+            let navigationController = NavigationController(rootViewController: settingsViewController)
+            navigationController.transitioningDelegate = navigationController
+
+            self.present(navigationController, animated: true, completion: nil)
+        }
     }
 
 }
