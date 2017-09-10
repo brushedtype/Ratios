@@ -15,6 +15,12 @@ fileprivate struct Actions {
     static let handleFieldValueChange = #selector(CalculatorViewController.handleFieldValueChange(_:))
 }
 
+fileprivate struct Assets {
+    private init() {}
+
+    static let settingsCog = UIImage(named: "settings-cog")
+}
+
 fileprivate func formatDoubleToString(_ value: Double) -> String? {
     let formatter = NumberFormatter()
     formatter.maximumFractionDigits = 2
@@ -39,7 +45,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Calculator"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: Actions.handleSettingsButtonPress)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Assets.settingsCog, style: .plain, target: self, action: Actions.handleSettingsButtonPress)
 
         self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
