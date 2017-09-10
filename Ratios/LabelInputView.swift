@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import CoreText
 
-fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
+fileprivate typealias FontFeature = [UIFontDescriptor.FeatureKey: Any]
+
+fileprivate let fontFeatureSettings: [FontFeature] = [
+    [.featureIdentifier: kNumberSpacingType, .typeIdentifier: kMonospacedNumbersSelector],
+    [.featureIdentifier: kAllTypographicFeaturesType, .typeIdentifier: true]
+]
+
+fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal", .featureSettings: fontFeatureSettings ])
 fileprivate let mediumWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium ]
 
 fileprivate let largeFont = UIFontMetrics.default.scaledFont(for: UIFont(descriptor: descriptor, size: 42))
