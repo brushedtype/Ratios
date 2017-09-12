@@ -70,6 +70,12 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.bringSubview(toFront: toVC.view)
 
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        shadowView.centerYAnchor.constraint(equalTo: toVC.view.centerYAnchor).isActive = true
+        shadowView.centerXAnchor.constraint(equalTo: toVC.view.centerXAnchor).isActive = true
+        shadowView.heightAnchor.constraint(equalTo: toVC.view.heightAnchor).isActive = true
+        shadowView.widthAnchor.constraint(equalTo: toVC.view.widthAnchor).isActive = true
+
         UIView.animate(withDuration: duration) {
             overlayView.alpha = 0.6
         }
@@ -98,12 +104,15 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.sendSubview(toBack: toVC.view)
 
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 5, options: [], animations: {
-            fromVC.view.frame = exitFrame.offsetBy(dx: 0, dy: exitFrame.height)
-
+        UIView.animate(withDuration: duration) {
             for view in viewsToRemove {
                 view.alpha = 0
             }
+        }
+
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 5, options: [], animations: {
+            fromVC.view.frame = exitFrame.offsetBy(dx: 0, dy: exitFrame.height)
+            transitionContext.containerView.layoutSubviews()
         }) { isComplete in
             transitionContext.completeTransition(isComplete)
         }

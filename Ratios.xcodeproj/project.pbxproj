@@ -147,6 +147,7 @@
 				BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */,
 				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
 				BC98F3951F6485AB00F6E1D4 /* ShadowLayer.swift */,
+				BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */,
 				BC98F38E1F5CA36F00F6E1D4 /* Settings */,
 				BC98F3871F5B177900F6E1D4 /* Keyboard */,
 				BC57D8671F5203C500A4ED41 /* Fonts */,
@@ -170,7 +171,6 @@
 		BC98F38E1F5CA36F00F6E1D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */,
 				BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */,
 			);
 			path = Settings;

@@ -25,6 +25,9 @@ class NavigationController: UINavigationController {
         UIBarButtonItem.appearance().setTitleTextAttributes([
             .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: regularWeightTraits ]), size: 17),
         ], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: regularWeightTraits ]), size: 17),
+        ], for: .highlighted)
 
         self.navigationBar.tintColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
