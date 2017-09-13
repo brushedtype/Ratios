@@ -25,6 +25,7 @@ fileprivate func formatDoubleToString(_ value: Double) -> String? {
     let formatter = NumberFormatter()
     formatter.maximumFractionDigits = 2
     formatter.minimumFractionDigits = 0
+    formatter.minimumIntegerDigits = 1
 
     return formatter.string(from: NSNumber(value: value))
 }
