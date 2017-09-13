@@ -37,9 +37,9 @@ class KeyboardViewController: UIInputViewController {
         keys.translatesAutoresizingMaskIntoConstraints = false
         keys.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         keys.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        keys.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+        keys.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         if #available(iOS 11.0, *) {
-            keys.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            keys.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
         } else {
             keys.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
         }
