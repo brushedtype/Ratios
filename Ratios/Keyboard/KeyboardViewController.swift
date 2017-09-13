@@ -23,8 +23,6 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
-        self.view.layer.shouldRasterize = true
-        self.view.layer.rasterizationScale = UIScreen.main.scale
 
         let keys = KeyboardSection(sectionSubviews: self.rows.map { (values) -> UIView in
             let buttons = values.map({ buttonValue -> KeyboardButton in
@@ -40,7 +38,11 @@ class KeyboardViewController: UIInputViewController {
         keys.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         keys.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
         keys.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
-        keys.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+        if #available(iOS 11.0, *) {
+            keys.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            keys.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+        }
 
         self.view.translatesAutoresizingMaskIntoConstraints = false
     }
