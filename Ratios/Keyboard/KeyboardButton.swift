@@ -31,14 +31,23 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
     convenience init(buttonValue: String) {
         self.init(type: .custom)
         self.value = buttonValue
-        self.setTitle(buttonValue, for: .normal)
-        self.setTitleColor(UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0), for: .normal)
+
+        if buttonValue == "<" {
+            let image = UIImage(named: "backspace")?.withRenderingMode(.alwaysTemplate)
+            self.setImage(image, for: .normal)
+        } else {
+            self.setAttributedTitle(NSAttributedString(string: buttonValue, attributes: [
+                .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 22),
+                .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+            ]), for: .normal)
+        }
+
+        self.tintColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         self.backgroundColor = self.normalBackgroundColor
 
-        self.setAttributedTitle(NSAttributedString(string: buttonValue, attributes: [
-            .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 22),
-            .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
-        ]), for: .normal)
+        self.contentHorizontalAlignment = .center
+        self.contentVerticalAlignment = .center
+        self.imageView?.contentMode = .center
 
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
