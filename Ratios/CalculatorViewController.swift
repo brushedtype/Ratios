@@ -39,8 +39,6 @@ class CalculatorViewController: UIViewController {
     let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
     let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
 
-    var centerYConstraint: NSLayoutConstraint? = nil
-
 
     override func viewDidLoad() {
         super.viewDidLoad()

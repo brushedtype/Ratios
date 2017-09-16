@@ -17,8 +17,6 @@ fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .tr
 
 class NavigationController: UINavigationController {
 
-    let shadowLayer = ShadowLayer()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +34,6 @@ class NavigationController: UINavigationController {
             .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 17),
             .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         ]
-
-        self.view.layer.insertSublayer(self.shadowLayer, at: 0)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        self.shadowLayer.path = UIBezierPath(roundedRect: self.view.frame, cornerRadius: 8).cgPath
     }
 
 }

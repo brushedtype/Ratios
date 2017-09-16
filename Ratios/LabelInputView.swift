@@ -27,14 +27,12 @@ class LabelInputView: UIView, UITextFieldDelegate {
 
     let labelView = UILabel()
     let textField = InputTextField()
-    let shadowLayer = ShadowLayer()
 
 
     init(label: String, initialValue: String? = nil) {
         super.init(frame: .zero)
 
         self.backgroundColor = .white
-        self.layer.cornerRadius = 3
 
         let stackView = UIStackView(arrangedSubviews: [
             self.labelView,
@@ -65,17 +63,15 @@ class LabelInputView: UIView, UITextFieldDelegate {
 
         self.textField.inputView = self.textField.inputViewController?.view
 
-        self.layer.insertSublayer(self.shadowLayer, at: 0)
+        self.layer.cornerRadius = 3
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 0.15
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
 
 }

@@ -61,10 +61,9 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.containerView.addSubview(snapshotView)
         }
 
-        let shadowLayer = ShadowLayer()
-        shadowLayer.path = UIBezierPath(roundedRect: toVC.view.bounds, cornerRadius: 8).cgPath
-        let shadowView = UIView(frame: toVC.view.frame)
-        shadowView.layer.insertSublayer(shadowLayer, at: 0)
+        let shadowView = ShadowView(frame: toVC.view.frame)
+        shadowView.backgroundColor = toVC.view.backgroundColor
+        shadowView.layer.cornerRadius = toVC.view.layer.cornerRadius
 
         transitionContext.containerView.addSubview(shadowView)
         transitionContext.containerView.addSubview(toVC.view)
