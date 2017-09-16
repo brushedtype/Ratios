@@ -140,6 +140,7 @@ class CalculatorViewController: UIViewController {
         self.groundsInputView.textField.resignFirstResponder()
         self.waterInputView.textField.resignFirstResponder()
 
+        // add delay for keyboard to dismiss before presenting SettingsViewController
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             let settingsViewController = SettingsViewController(style: .grouped)
             let navigationController = NavigationController(rootViewController: settingsViewController)
