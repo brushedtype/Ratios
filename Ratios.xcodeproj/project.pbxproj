@@ -141,13 +141,11 @@
 			children = (
 				BC6739E31E23BDEC005399BF /* AppDelegate.swift */,
 				BC98F3911F6417BC00F6E1D4 /* NavigationController.swift */,
-				BC8A674E1F519E8400A7E627 /* Calculator.swift */,
 				BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */,
-				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
-				BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */,
-				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
+				BCEBCDAD1F6D8B7D00805050 /* Inputs */,
 				BC98F38E1F5CA36F00F6E1D4 /* Settings */,
 				BC98F3871F5B177900F6E1D4 /* Keyboard */,
+				BCEBCDAC1F6D8B6600805050 /* Helpers */,
 				BC57D8671F5203C500A4ED41 /* Fonts */,
 				BC6739EA1E23BDEC005399BF /* Assets.xcassets */,
 				BC6739EC1E23BDEC005399BF /* LaunchScreen.storyboard */,
@@ -174,6 +172,24 @@
 				BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		BCEBCDAC1F6D8B6600805050 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BC8A674E1F519E8400A7E627 /* Calculator.swift */,
+				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BCEBCDAD1F6D8B7D00805050 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */,
+				BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
