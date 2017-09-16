@@ -15,12 +15,6 @@ fileprivate struct Actions {
     static let handleFieldValueChange = #selector(CalculatorViewController.handleFieldValueChange(_:))
 }
 
-fileprivate struct Assets {
-    private init() {}
-
-    static let settingsCog = UIImage(named: "settings-cog")
-}
-
 fileprivate func formatDoubleToString(_ value: Double) -> String? {
     let formatter = NumberFormatter()
     formatter.maximumFractionDigits = 2

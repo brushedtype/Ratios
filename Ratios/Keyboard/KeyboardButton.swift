@@ -8,13 +8,6 @@
 
 import UIKit
 
-fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
-fileprivate let mediumWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium ]
-
-fileprivate let largeFont = UIFont(descriptor: descriptor, size: 42)
-fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
-
-
 enum KeyboardButtonValue {
     case literal(String)
     case delete
@@ -41,7 +34,7 @@ class KeyboardButton: UIButton {
             self.setImage(image, for: .normal)
         case .literal(let value):
             self.setAttributedTitle(NSAttributedString(string: value, attributes: [
-                .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 22),
+                .font: UIFont.applicationFont(ofSize: 22, weight: .medium),
                 .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
             ]), for: .normal)
         }

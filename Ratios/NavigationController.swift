@@ -8,30 +8,23 @@
 
 import UIKit
 
-fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
-fileprivate let regularWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.regular ]
-fileprivate let mediumWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium ]
-
-fileprivate let largeFont = UIFont(descriptor: descriptor, size: 42)
-fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
-
 class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: regularWeightTraits ]), size: 17),
+            .font: UIFont.applicationFont(ofSize: 17),
         ], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: regularWeightTraits ]), size: 17),
+            .font: UIFont.applicationFont(ofSize: 17),
         ], for: .highlighted)
 
         self.navigationBar.tintColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.titleTextAttributes = [
-            .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 17),
+            .font: UIFont.applicationFont(ofSize: 17, weight: .medium),
             .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         ]
     }

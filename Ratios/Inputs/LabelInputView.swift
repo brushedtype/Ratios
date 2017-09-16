@@ -7,21 +7,6 @@
 //
 
 import UIKit
-import CoreText
-
-fileprivate typealias FontFeature = [UIFontDescriptor.FeatureKey: Any]
-
-fileprivate let fontFeatureSettings: [FontFeature] = [
-    [.featureIdentifier: kNumberSpacingType, .typeIdentifier: kMonospacedNumbersSelector],
-    [.featureIdentifier: kAllTypographicFeaturesType, .typeIdentifier: true]
-]
-
-fileprivate let descriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal", .featureSettings: fontFeatureSettings ])
-fileprivate let mediumWeightTraits = [ UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium ]
-
-fileprivate let largeFont = UIFont(descriptor: descriptor, size: 42)
-fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
-
 
 class LabelInputView: UIView, UITextFieldDelegate {
 
@@ -44,11 +29,11 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.spacing = 0
         stackView.alignment = .fill
 
-        self.textField.font = largeFont
+        self.textField.font = UIFont.monospacedApplicationFont(ofSize: 42)
         self.textField.keyboardType = .decimalPad
         self.textField.backgroundColor = .clear
 
-        self.labelView.font = titleFont
+        self.labelView.font = UIFont.applicationFont(ofSize: 13, weight: .medium)
 
         self.labelView.text = label
         self.textField.text = initialValue
