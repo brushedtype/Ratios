@@ -45,7 +45,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             return transitionContext.completeTransition(false)
         }
 
-        let entryFrame = transitionContext.containerView.frame.insetBy(dx: 30, dy: 90)
+        let entryFrame = transitionContext.containerView.frame.insetBy(dx: 20, dy: 60)
 
         toVC.view.alpha = 0
         toVC.view.frame = entryFrame.offsetBy(dx: 0, dy: entryFrame.height)

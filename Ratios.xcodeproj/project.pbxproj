@@ -40,6 +40,7 @@
 		BC98F3961F6485AB00F6E1D4 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3951F6485AB00F6E1D4 /* ShadowView.swift */; };
 		BCEBCDAF1F6D8BDF00805050 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */; };
 		BCEBCDB11F6D8C1D00805050 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB01F6D8C1D00805050 /* Assets.swift */; };
+		BCEBCDB31F6DA89600805050 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB21F6DA89600805050 /* AppInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		BC98F3951F6485AB00F6E1D4 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BCEBCDB01F6D8C1D00805050 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		BCEBCDB21F6DA89600805050 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */,
 				BCEBCDB01F6D8C1D00805050 /* Assets.swift */,
 				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
+				BCEBCDB21F6DA89600805050 /* AppInfo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				BC98F38B1F5C7BA900F6E1D4 /* InputTextField.swift in Sources */,
 				BC98F3921F6417BC00F6E1D4 /* NavigationController.swift in Sources */,
 				BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */,
+				BCEBCDB31F6DA89600805050 /* AppInfo.swift in Sources */,
 				BC98F3891F5B179500F6E1D4 /* KeyboardButton.swift in Sources */,
 				BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */,
 				BC57D89D1F522F9E00A4ED41 /* KeyboardViewController.swift in Sources */,

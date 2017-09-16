@@ -8,27 +8,25 @@
 
 import UIKit
 
-fileprivate struct Fonts {
-    private init() {}
+extension UIFont {
 
     private static let monospaceFontSettings: [[UIFontDescriptor.FeatureKey: Any]] = [
         [.featureIdentifier: kNumberSpacingType, .typeIdentifier: kMonospacedNumbersSelector],
         [.featureIdentifier: kAllTypographicFeaturesType, .typeIdentifier: true]
     ]
 
-    fileprivate static let standardFontDescriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
-    fileprivate static let monospaceFontDescriptor = standardFontDescriptor.addingAttributes([ .featureSettings: monospaceFontSettings ])
-}
+    private static let standardFontDescriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
+    private static let monospaceFontDescriptor = standardFontDescriptor.addingAttributes([ .featureSettings: monospaceFontSettings ])
 
-extension UIFont {
 
     static func applicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
         let traits: [UIFontDescriptor.TraitKey: Any] = [ .weight: weight ]
-        return UIFont(descriptor: Fonts.standardFontDescriptor.addingAttributes([ .traits: traits ]), size: ofSize)
+        return UIFont(descriptor: UIFont.standardFontDescriptor.addingAttributes([ .traits: traits ]), size: ofSize)
     }
 
-    static func monospacedApplicationFont(ofSize: CGFloat) -> UIFont {
-        return UIFont(descriptor: Fonts.monospaceFontDescriptor, size: ofSize)
+    static func monospacedApplicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
+        let traits: [UIFontDescriptor.TraitKey: Any] = [ .weight: weight ]
+        return UIFont(descriptor: UIFont.monospaceFontDescriptor.addingAttributes([ .traits: traits ]), size: ofSize)
     }
 
 }

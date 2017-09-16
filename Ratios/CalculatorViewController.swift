@@ -136,7 +136,7 @@ class CalculatorViewController: UIViewController {
 
         // add delay for keyboard to dismiss before presenting SettingsViewController
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            let settingsViewController = SettingsViewController(style: .grouped)
+            let settingsViewController = SettingsViewController(nibName: nil, bundle: nil)
             let navigationController = NavigationController(rootViewController: settingsViewController)
             navigationController.transitioningDelegate = navigationController
 
