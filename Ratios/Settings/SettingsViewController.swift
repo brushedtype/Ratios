@@ -13,7 +13,6 @@ fileprivate struct Actions {
     private init() {}
 
     static let handleCloseButtonPress = #selector(SettingsViewController.handleCloseButtonPress(_:))
-    static let handleReviewButtonPress = #selector(SettingsViewController.handleReviewButtonPress(_:))
     static let handleGitHubButtonPress = #selector(SettingsViewController.handleGitHubButtonPress(_:))
     static let handleFontButtonPress = #selector(SettingsViewController.handleFontButtonPress(_:))
     static let handleFontAuthorButtonPress = #selector(SettingsViewController.handleFontAuthorButtonPress(_:))
@@ -26,8 +25,7 @@ class SettingsViewController: UIViewController {
     let iconImageView = UIImageView(image: UIImage(named: "AppIcon"))
 
     let aboutTextView = UITextView(frame: .zero)
-    let reviewButton = RoundedButton(title: "Leave Review")
-    let aboutButton = RoundedButton(title: "Open GitHub")
+    let aboutButton = RoundedButton(title: "Contribute on GitHub")
 
     let fontTextView = UITextView(frame: .zero)
     let fontButton = RoundedButton(title: "About Tofino")
@@ -48,7 +46,7 @@ class SettingsViewController: UIViewController {
         self.scrollView.alwaysBounceVertical = true
 
         self.aboutTextView.text = """
-        Ratios is free and open source. If you enjoy using the app, please leave a review or contibute on GitHub.
+        Ratios is free and open source and always will be. If Ratios is missing a feature you need, help build the app on GitHub.
         """
         self.aboutTextView.font = UIFont.applicationFont(ofSize: 16)
         self.aboutTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
@@ -58,22 +56,11 @@ class SettingsViewController: UIViewController {
         self.aboutTextView.textAlignment = .center
         self.aboutTextView.backgroundColor = .clear
 
-        self.reviewButton.addTarget(self, action: Actions.handleReviewButtonPress, for: .touchUpInside)
         self.aboutButton.addTarget(self, action: Actions.handleGitHubButtonPress, for: .touchUpInside)
-
-        let aboutButtonsStackView = UIStackView(arrangedSubviews: [
-            self.reviewButton,
-            self.aboutButton
-        ])
-
-        aboutButtonsStackView.axis = .horizontal
-        aboutButtonsStackView.alignment = .top
-        aboutButtonsStackView.distribution = .fillEqually
-        aboutButtonsStackView.spacing = 8
 
         let aboutStackView = UIStackView(arrangedSubviews: [
             self.aboutTextView,
-            aboutButtonsStackView
+            self.aboutButton
         ])
 
         aboutStackView.axis = .vertical
@@ -82,8 +69,8 @@ class SettingsViewController: UIViewController {
         aboutStackView.spacing = 8
 
         self.fontTextView.text = """
-        Ratios uses the wonderful Tofino typeface by Alanna Munro.
-        If you think the font is as fantastic as we do, consider using Tofino in your own projects.
+        Ratios uses the wonderful Tofino typeface by Alanna Munro. \
+        Support Alanna's work, and consider using Tofino in your own projects.
         """
         self.fontTextView.font = UIFont.applicationFont(ofSize: 16)
         self.fontTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
