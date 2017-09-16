@@ -63,6 +63,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         let shadowView = ShadowView(frame: toVC.view.frame)
         shadowView.backgroundColor = toVC.view.backgroundColor
+        shadowView.alpha = 0
         shadowView.layer.cornerRadius = toVC.view.layer.cornerRadius
 
         transitionContext.containerView.addSubview(shadowView)
