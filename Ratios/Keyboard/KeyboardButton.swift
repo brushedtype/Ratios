@@ -15,26 +15,32 @@ fileprivate let largeFont = UIFont(descriptor: descriptor, size: 42)
 fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
 
 
+enum KeyboardButtonValue {
+    case literal(String)
+    case delete
+}
 
 class KeyboardButton: UIButton {
 
+    private(set) var buttonValue: KeyboardButtonValue
 
-    private(set) var value: String? = nil
     var animator: UIViewPropertyAnimator? = nil
 
     var normalBackgroundColor = UIColor.white
     var activeBackgroundColor = UIColor(red:0.60, green:0.53, blue:0.46, alpha:1.0)
 
 
-    convenience init(buttonValue: String) {
-        self.init(type: .custom)
-        self.value = buttonValue
+    init(buttonValue: KeyboardButtonValue) {
+        self.buttonValue = buttonValue
 
-        if buttonValue == "<" {
+        super.init(frame: .zero)
+
+        switch self.buttonValue {
+        case .delete:
             let image = UIImage(named: "backspace")?.withRenderingMode(.alwaysTemplate)
             self.setImage(image, for: .normal)
-        } else {
-            self.setAttributedTitle(NSAttributedString(string: buttonValue, attributes: [
+        case .literal(let value):
+            self.setAttributedTitle(NSAttributedString(string: value, attributes: [
                 .font: UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 22),
                 .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
             ]), for: .normal)
@@ -58,6 +64,8 @@ class KeyboardButton: UIButton {
         self.layer.shadowOpacity = 0.15
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

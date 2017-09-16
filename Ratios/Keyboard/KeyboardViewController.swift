@@ -12,11 +12,11 @@ class KeyboardViewController: UIInputViewController {
 
     static let shared = KeyboardViewController()
 
-    let rows = [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"],
-        [".", "0", "<"]
+    let rows: [[KeyboardButtonValue]] = [
+        [.literal("1"), .literal("2"), .literal("3")],
+        [.literal("4"), .literal("5"), .literal("6")],
+        [.literal("7"), .literal("8"), .literal("9")],
+        [.literal("."), .literal("0"), .delete]
     ]
 
     override func viewDidLoad() {
@@ -48,14 +48,15 @@ class KeyboardViewController: UIInputViewController {
     }
 
     @objc func handleKeyPress(_ sender: AnyObject?) {
-        guard let button = sender as? KeyboardButton, let buttonValue = button.value else {
+        guard let button = sender as? KeyboardButton else {
             return
         }
 
-        if buttonValue == "<" {
+        switch button.buttonValue {
+        case .delete:
             self.textDocumentProxy.deleteBackward()
-        } else {
-            self.textDocumentProxy.insertText(buttonValue)
+        case .literal(let value):
+            self.textDocumentProxy.insertText(value)
         }
     }
 
