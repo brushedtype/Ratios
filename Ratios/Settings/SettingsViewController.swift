@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 fileprivate struct Actions {
     private init() {}
@@ -21,6 +22,8 @@ fileprivate struct Actions {
 class SettingsViewController: UIViewController {
 
     let scrollView = UIScrollView(frame: .zero)
+
+    let iconImageView = UIImageView(image: UIImage(named: "AppIcon"))
 
     let aboutTextView = UITextView(frame: .zero)
     let reviewButton = RoundedButton(title: "Leave Review")
@@ -42,6 +45,8 @@ class SettingsViewController: UIViewController {
 
         self.title = "About"
 
+        self.scrollView.alwaysBounceVertical = true
+
         self.aboutTextView.text = """
         Ratios is free and open source. If you enjoy using the app, please leave a review or contibute on GitHub.
         """
@@ -62,7 +67,7 @@ class SettingsViewController: UIViewController {
         ])
 
         aboutButtonsStackView.axis = .horizontal
-        aboutButtonsStackView.alignment = .fill
+        aboutButtonsStackView.alignment = .top
         aboutButtonsStackView.distribution = .fillEqually
         aboutButtonsStackView.spacing = 8
 
@@ -73,7 +78,7 @@ class SettingsViewController: UIViewController {
 
         aboutStackView.axis = .vertical
         aboutStackView.alignment = .fill
-        aboutStackView.distribution = .fillProportionally
+        aboutStackView.distribution = .equalSpacing
         aboutStackView.spacing = 8
 
         self.fontTextView.text = """
@@ -97,7 +102,7 @@ class SettingsViewController: UIViewController {
         ])
 
         fontButtonsStackView.axis = .horizontal
-        fontButtonsStackView.alignment = .fill
+        fontButtonsStackView.alignment = .top
         fontButtonsStackView.distribution = .fillEqually
         fontButtonsStackView.spacing = 8
 
@@ -108,7 +113,7 @@ class SettingsViewController: UIViewController {
 
         fontStackView.axis = .vertical
         fontStackView.alignment = .fill
-        fontStackView.distribution = .fillProportionally
+        fontStackView.distribution = .equalSpacing
         fontStackView.spacing = 8
 
         self.versionLabel.text = "\(AppInfo.shared.name) v\(AppInfo.shared.version) (\(AppInfo.shared.build))"
@@ -117,6 +122,7 @@ class SettingsViewController: UIViewController {
         self.versionLabel.textAlignment = .center
 
         let stackView = UIStackView(arrangedSubviews: [
+            self.iconImageView,
             aboutStackView,
             fontStackView,
             self.versionLabel
@@ -124,7 +130,7 @@ class SettingsViewController: UIViewController {
 
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalSpacing
         stackView.spacing = 32
 
         self.view.addSubview(stackView)
@@ -132,7 +138,6 @@ class SettingsViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32).isActive = true
         stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -32).isActive = true
 
         self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
 
@@ -144,19 +149,27 @@ class SettingsViewController: UIViewController {
     }
 
     @objc func handleReviewButtonPress(_ sender: AnyObject?) {
-
+        let url = URL(string: "https://itunes.apple.com/us/app/ratios/id1286379929?ls=1&mt=8&action=write-review")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     @objc func handleGitHubButtonPress(_ sender: AnyObject?) {
-
+        let url = URL(string: "https://github.com/brushedtype/Ratios")!
+        let safariViewController = SFSafariViewController(url: url)
+        self.navigationController?.present(safariViewController, animated: true, completion: nil)
+//        self.present(safariViewController, animated: true, completion: nil)
     }
 
     @objc func handleFontButtonPress(_ sender: AnyObject?) {
-
+        let url = URL(string: "http://tofino.losttype.com")!
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 
     @objc func handleFontAuthorButtonPress(_ sender: AnyObject?) {
-
+        let url = URL(string: "https://alannamunro.com")!
+        let safariViewController = SFSafariViewController(url: url)
+        self.present(safariViewController, animated: true, completion: nil)
     }
 
 }

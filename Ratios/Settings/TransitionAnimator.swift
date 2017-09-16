@@ -45,7 +45,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             return transitionContext.completeTransition(false)
         }
 
-        let entryFrame = transitionContext.containerView.frame.insetBy(dx: 20, dy: 60)
+        let entryFrame = transitionContext.containerView.frame
 
         toVC.view.alpha = 0
         toVC.view.frame = entryFrame.offsetBy(dx: 0, dy: entryFrame.height)
@@ -61,28 +61,14 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.containerView.addSubview(snapshotView)
         }
 
-        let shadowView = ShadowView(frame: toVC.view.frame)
-        shadowView.backgroundColor = toVC.view.backgroundColor
-        shadowView.alpha = 0
-        shadowView.layer.cornerRadius = toVC.view.layer.cornerRadius
-
-        transitionContext.containerView.addSubview(shadowView)
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.bringSubview(toFront: toVC.view)
-
-        shadowView.translatesAutoresizingMaskIntoConstraints = false
-        shadowView.centerYAnchor.constraint(equalTo: toVC.view.centerYAnchor).isActive = true
-        shadowView.centerXAnchor.constraint(equalTo: toVC.view.centerXAnchor).isActive = true
-        shadowView.heightAnchor.constraint(equalTo: toVC.view.heightAnchor).isActive = true
-        shadowView.widthAnchor.constraint(equalTo: toVC.view.widthAnchor).isActive = true
 
         UIView.animate(withDuration: duration) {
             overlayView.alpha = 0.6
         }
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 8, initialSpringVelocity: 5, options: [], animations: {
-            shadowView.alpha = 1
-            shadowView.frame = entryFrame
             toVC.view.alpha = 1
             toVC.view.frame = entryFrame
         }) { isComplete in
