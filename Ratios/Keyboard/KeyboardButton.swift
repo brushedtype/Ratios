@@ -15,18 +15,16 @@ fileprivate let largeFont = UIFont(descriptor: descriptor, size: 42)
 fileprivate let titleFont = UIFont(descriptor: descriptor.addingAttributes([ .traits: mediumWeightTraits ]), size: 13)
 
 
-class KeyboardButton: UIButton, UIInputViewAudioFeedback {
 
-    var enableInputClicksWhenVisible: Bool {
-        return true
-    }
+class KeyboardButton: UIButton {
+
 
     private(set) var value: String? = nil
+    var animator: UIViewPropertyAnimator? = nil
 
     var normalBackgroundColor = UIColor.white
     var activeBackgroundColor = UIColor(red:0.60, green:0.53, blue:0.46, alpha:1.0)
 
-    let shadowLayer = ShadowLayer()
 
     convenience init(buttonValue: String) {
         self.init(type: .custom)
@@ -54,29 +52,31 @@ class KeyboardButton: UIButton, UIInputViewAudioFeedback {
 
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = false
-        self.layer.insertSublayer(self.shadowLayer, at: 0)
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 0.15
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        self.backgroundColor = self.activeBackgroundColor
+        self.animator?.stopAnimation(true)
 
-        UIDevice.current.playInputClick()
+        self.backgroundColor = self.activeBackgroundColor.withAlphaComponent(0.5)
+        self.layer.shadowOpacity = 0
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
 
-        UIView.animate(withDuration: 0.125) {
+        self.animator = UIViewPropertyAnimator(duration: 0.125, curve: .linear, animations: { [unowned self] in
             self.backgroundColor = self.normalBackgroundColor
-        }
+            self.layer.shadowOpacity = 0.15
+        })
+        self.animator?.startAnimation()
     }
 
 }
