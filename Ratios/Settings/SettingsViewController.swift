@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
 
     let scrollView = UIScrollView(frame: .zero)
 
-    let iconImageView = UIImageView(image: UIImage(named: "AppIcon"))
+    let titleLabel = UILabel(frame: .zero)
 
     let aboutTextView = UITextView(frame: .zero)
     let aboutButton = RoundedButton(title: "Contribute on GitHub")
@@ -43,12 +43,14 @@ class SettingsViewController: UIViewController {
 
         self.title = "About"
 
-        self.scrollView.alwaysBounceVertical = true
+        self.titleLabel.text = "Ratios"
+        self.titleLabel.font = UIFont.applicationFont(ofSize: 48, weight: .thin)
 
         self.aboutTextView.text = """
-        Ratios is free and open source and always will be. If Ratios is missing a feature you need, help build the app on GitHub.
+        Ratios is free and open source. If there's a feature you need, or \
+        something doesn't work right, you can help improve the app on GitHub.
         """
-        self.aboutTextView.font = UIFont.applicationFont(ofSize: 16)
+        self.aboutTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
         self.aboutTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         self.aboutTextView.isScrollEnabled = false
         self.aboutTextView.isEditable = false
@@ -72,7 +74,7 @@ class SettingsViewController: UIViewController {
         Ratios uses the wonderful Tofino typeface by Alanna Munro. \
         Support Alanna's work, and consider using Tofino in your own projects.
         """
-        self.fontTextView.font = UIFont.applicationFont(ofSize: 16)
+        self.fontTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
         self.fontTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
         self.fontTextView.isScrollEnabled = false
         self.fontTextView.isEditable = false
@@ -109,14 +111,14 @@ class SettingsViewController: UIViewController {
         self.versionLabel.textAlignment = .center
 
         let stackView = UIStackView(arrangedSubviews: [
-            self.iconImageView,
+            self.titleLabel,
             aboutStackView,
             fontStackView,
             self.versionLabel
         ])
 
         stackView.axis = .vertical
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = 32
 

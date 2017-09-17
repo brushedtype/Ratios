@@ -29,7 +29,7 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.spacing = 0
         stackView.alignment = .fill
 
-        self.textField.font = UIFont.monospacedApplicationFont(ofSize: 42)
+        self.textField.font = UIFont.monospacedApplicationFont(ofSize: 42, weight: .light)
         self.textField.keyboardType = .decimalPad
         self.textField.backgroundColor = .clear
 

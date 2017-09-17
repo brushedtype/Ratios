@@ -22,6 +22,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Tofino-Light.otf</string>
 		<string>Tofino-Book.otf</string>
 		<string>Tofino-Regular.otf</string>
 		<string>Tofino-Medium.otf</string>

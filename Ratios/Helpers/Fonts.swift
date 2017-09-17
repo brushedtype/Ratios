@@ -15,18 +15,30 @@ extension UIFont {
         [.featureIdentifier: kAllTypographicFeaturesType, .typeIdentifier: true]
     ]
 
-    private static let standardFontDescriptor = UIFontDescriptor(fontAttributes: [ .family: "Tofino Personal" ])
+    private static let standardFontDescriptor = UIFontDescriptor(fontAttributes: [:])
     private static let monospaceFontDescriptor = standardFontDescriptor.addingAttributes([ .featureSettings: monospaceFontSettings ])
 
+    private static func fontName(for weight: UIFont.Weight) -> String {
+        switch weight {
+        case .regular:
+            return "TofinoPersonal-Regular"
+        case .medium:
+            return "TofinoPersonal-Medium"
+        case .light:
+            return "TofinoPersonal-Book"
+        case .thin:
+            return "TofinoPersonal-Light"
+        default:
+            return "TofinoPersonal-Regular"
+        }
+    }
 
     static func applicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
-        let traits: [UIFontDescriptor.TraitKey: Any] = [ .weight: weight ]
-        return UIFont(descriptor: UIFont.standardFontDescriptor.addingAttributes([ .traits: traits ]), size: ofSize)
+        return UIFont(descriptor: UIFont.standardFontDescriptor.addingAttributes([ .name: UIFont.fontName(for: weight) ]), size: ofSize)
     }
 
     static func monospacedApplicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
-        let traits: [UIFontDescriptor.TraitKey: Any] = [ .weight: weight ]
-        return UIFont(descriptor: UIFont.monospaceFontDescriptor.addingAttributes([ .traits: traits ]), size: ofSize)
+        return UIFont(descriptor: UIFont.monospaceFontDescriptor.addingAttributes([ .name: UIFont.fontName(for: weight) ]), size: ofSize)
     }
 
 }
