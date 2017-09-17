@@ -46,6 +46,7 @@ class SettingsViewController: UIViewController {
 
         self.titleLabel.text = "Ratios"
         self.titleLabel.font = UIFont.applicationFont(ofSize: 48, weight: .thin)
+        self.titleLabel.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
 
         self.aboutTextView.text = """
         Ratios is free and open source. If there's a feature you think's missing, \
