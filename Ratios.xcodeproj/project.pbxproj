@@ -211,6 +211,7 @@
 				BC6739DC1E23BDEC005399BF /* Sources */,
 				BC6739DD1E23BDEC005399BF /* Frameworks */,
 				BC6739DE1E23BDEC005399BF /* Resources */,
+				BC0B2DD61F6DFA1D0056966F /* Update Build Number */,
 			);
 			buildRules = (
 			);
@@ -284,6 +285,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC0B2DD61F6DFA1D0056966F /* Update Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/Scripts/update_build_number.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC6739DC1E23BDEC005399BF /* Sources */ = {

@@ -42,13 +42,14 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "About"
+        self.navigationItem.title = ""
 
         self.titleLabel.text = "Ratios"
         self.titleLabel.font = UIFont.applicationFont(ofSize: 48, weight: .thin)
 
         self.aboutTextView.text = """
-        Ratios is free and open source. If there's a feature you need, or \
-        something doesn't work right, you can help improve the app on GitHub.
+        Ratios is free and open source. If there's a feature you think's missing, \
+        or something doesn't work right, you can help improve the app on GitHub.
         """
         self.aboutTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
         self.aboutTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
