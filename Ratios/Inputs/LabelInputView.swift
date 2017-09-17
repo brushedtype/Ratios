@@ -29,14 +29,13 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.spacing = 0
         stackView.alignment = .fill
 
-        self.textField.font = UIFont.monospacedApplicationFont(ofSize: 42, weight: .light)
+        self.textField.text = initialValue
+        self.textField.font = UIFont.monospacedApplicationFont(ofSize: 36, weight: .light)
         self.textField.keyboardType = .decimalPad
         self.textField.backgroundColor = .clear
 
-        self.labelView.font = UIFont.applicationFont(ofSize: 13, weight: .medium)
-
         self.labelView.text = label
-        self.textField.text = initialValue
+        self.labelView.font = UIFont.applicationFont(ofSize: 13, weight: .medium)
 
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +43,6 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 72).isActive = true
 
         self.textField.inputView = self.textField.inputViewController?.view
 
