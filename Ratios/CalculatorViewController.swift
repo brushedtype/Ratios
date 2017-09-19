@@ -66,7 +66,7 @@ class CalculatorViewController: UIViewController {
         self.view.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 8).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8).isActive = true
         stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         stackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
 
