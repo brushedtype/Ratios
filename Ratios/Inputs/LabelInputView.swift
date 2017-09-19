@@ -44,8 +44,6 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
 
-        self.textField.inputView = self.textField.inputViewController?.view
-
         self.layer.cornerRadius = 3
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 3

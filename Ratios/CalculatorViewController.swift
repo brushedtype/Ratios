@@ -129,10 +129,7 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleSettingsButtonPress(_ sender: AnyObject?) {
-        self.ratioInputView.textField.resignFirstResponder()
-        self.totalInputView.textField.resignFirstResponder()
-        self.groundsInputView.textField.resignFirstResponder()
-        self.waterInputView.textField.resignFirstResponder()
+        KeyboardViewController.shared.dismissKeyboard()
 
         // add delay for keyboard to dismiss before presenting SettingsViewController
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
