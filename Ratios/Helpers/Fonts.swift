@@ -33,12 +33,21 @@ extension UIFont {
         }
     }
 
+
     static func applicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
-        return UIFont(descriptor: UIFont.standardFontDescriptor.addingAttributes([ .name: UIFont.fontName(for: weight) ]), size: ofSize)
+        let descriptor = UIFont.standardFontDescriptor.addingAttributes([
+            .name: UIFont.fontName(for: weight)
+        ])
+
+        return UIFont(descriptor: descriptor, size: ofSize)
     }
 
     static func monospacedApplicationFont(ofSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
-        return UIFont(descriptor: UIFont.monospaceFontDescriptor.addingAttributes([ .name: UIFont.fontName(for: weight) ]), size: ofSize)
+        let descriptor = UIFont.monospaceFontDescriptor.addingAttributes([
+            .name: UIFont.fontName(for: weight)
+        ])
+
+        return UIFont(descriptor: descriptor, size: ofSize)
     }
 
 }
