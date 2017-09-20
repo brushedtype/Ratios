@@ -27,7 +27,10 @@ extension UserDefaults: PersistenceStore {
         let grounds = self.double(forKey: UserDefaults.ratiosPersistenceGroundsKey)
         let ratio = self.integer(forKey: UserDefaults.ratiosPersistenceRatioKey)
 
-        return (grounds: grounds, ratio: ratio > 0 ? ratio : 16)
+        let groundsOrFallback = grounds > 0 ? grounds : 12
+        let ratioOrFallback = ratio > 0 ? ratio : 16
+
+        return (grounds: groundsOrFallback, ratio: ratioOrFallback)
     }
 
 }
