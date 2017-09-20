@@ -13,7 +13,7 @@ struct Theme {
 
 
     /// The normal keyboard button colour
-    static let keyboardButtonColour = UIColor(red:0.98, green:0.96, blue:0.93, alpha:1.0)
+    static let keyboardButtonColour = UIColor(red:0.99, green:0.99, blue:0.98, alpha:1.0)
 
     /// The active/highlighted keyboard button colour
     static let keyboardButtonHighlightColour = UIColor(red:0.77, green:0.70, blue:0.63, alpha:1.0)
