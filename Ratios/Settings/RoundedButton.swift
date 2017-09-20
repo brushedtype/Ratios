@@ -16,7 +16,7 @@ class RoundedButton: UIButton {
         super.init(frame: .zero)
 
         self.setTitle(title, for: .normal)
-        self.setTitleColor(UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0), for: .normal)
+        self.setTitleColor(Theme.accentColour, for: .normal)
 
         self.backgroundColor = .clear
         self.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 12, right: 0)
@@ -24,7 +24,7 @@ class RoundedButton: UIButton {
 
         self.layer.cornerRadius = 8
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0).withAlphaComponent(0.4).cgColor
+        self.layer.borderColor = Theme.buttonHighlightColour.cgColor
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -36,7 +36,7 @@ class RoundedButton: UIButton {
 
         self.animator?.stopAnimation(true)
 
-        self.backgroundColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0).withAlphaComponent(0.4)
+        self.backgroundColor = Theme.buttonHighlightColour
         self.layer.borderWidth = 0
     }
 

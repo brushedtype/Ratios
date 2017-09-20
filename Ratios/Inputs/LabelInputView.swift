@@ -36,6 +36,7 @@ class LabelInputView: UIView, UITextFieldDelegate {
 
         self.labelView.text = label
         self.labelView.font = UIFont.applicationFont(ofSize: 13, weight: .medium)
+        self.labelView.textColor = Theme.accentColour
 
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +46,7 @@ class LabelInputView: UIView, UITextFieldDelegate {
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
 
         self.layer.cornerRadius = 3
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = Theme.shadowColour.cgColor
         self.layer.shadowRadius = 3
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 0.15

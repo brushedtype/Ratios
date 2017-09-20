@@ -19,8 +19,8 @@ class KeyboardButton: UIButton {
 
     var animator: UIViewPropertyAnimator? = nil
 
-    var normalBackgroundColor = UIColor.white
-    var activeBackgroundColor = UIColor(red:0.60, green:0.53, blue:0.46, alpha:1.0)
+    var normalBackgroundColor = Theme.keyboardButtonColour
+    var activeBackgroundColor = Theme.keyboardButtonHighlightColour
 
 
     init(buttonValue: KeyboardButtonValue) {
@@ -33,13 +33,14 @@ class KeyboardButton: UIButton {
             let image = UIImage(named: "backspace")?.withRenderingMode(.alwaysTemplate)
             self.setImage(image, for: .normal)
         case .literal(let value):
-            self.setAttributedTitle(NSAttributedString(string: value, attributes: [
+            let attributedString = NSAttributedString(string: value, attributes: [
                 .font: UIFont.applicationFont(ofSize: 22, weight: .medium),
-                .foregroundColor: UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
-            ]), for: .normal)
+                .foregroundColor: Theme.accentColour
+            ])
+            self.setAttributedTitle(attributedString, for: .normal)
         }
 
-        self.tintColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+        self.tintColor = Theme.accentColour
         self.backgroundColor = self.normalBackgroundColor
 
         self.contentHorizontalAlignment = .center
@@ -51,7 +52,7 @@ class KeyboardButton: UIButton {
 
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = Theme.shadowColour.cgColor
         self.layer.shadowRadius = 3
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 0.15
@@ -66,7 +67,7 @@ class KeyboardButton: UIButton {
 
         self.animator?.stopAnimation(true)
 
-        self.backgroundColor = self.activeBackgroundColor.withAlphaComponent(0.5)
+        self.backgroundColor = self.activeBackgroundColor
         self.layer.shadowOpacity = 0
     }
 

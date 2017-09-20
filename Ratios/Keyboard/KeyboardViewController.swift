@@ -22,7 +22,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
+        self.view.backgroundColor = Theme.backgroundColour
 
         let keys = KeyboardSection(sectionSubviews: self.rows.map { (values) -> UIView in
             let buttons = values.map({ buttonValue -> KeyboardButton in

@@ -43,17 +43,20 @@ class SettingsViewController: UIViewController {
 
         self.title = "About"
         self.navigationItem.title = ""
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: Actions.handleCloseButtonPress)
+
+        self.view.backgroundColor = Theme.backgroundColour
 
         self.titleLabel.text = "Ratios"
         self.titleLabel.font = UIFont.applicationFont(ofSize: 48, weight: .thin)
-        self.titleLabel.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+        self.titleLabel.textColor = Theme.accentColour
 
         self.aboutTextView.text = """
         Ratios is free and open source. If there's a feature you think's missing, \
         or something doesn't work right, you can help improve the app on GitHub.
         """
         self.aboutTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
-        self.aboutTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+        self.aboutTextView.textColor = Theme.accentColour
         self.aboutTextView.isScrollEnabled = false
         self.aboutTextView.isEditable = false
         self.aboutTextView.isSelectable = false
@@ -77,7 +80,7 @@ class SettingsViewController: UIViewController {
         Support Alanna's work, and consider using Tofino in your own projects.
         """
         self.fontTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
-        self.fontTextView.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+        self.fontTextView.textColor = Theme.accentColour
         self.fontTextView.isScrollEnabled = false
         self.fontTextView.isEditable = false
         self.fontTextView.isSelectable = false
@@ -109,7 +112,7 @@ class SettingsViewController: UIViewController {
 
         self.versionLabel.text = "\(AppInfo.shared.name) v\(AppInfo.shared.version) (\(AppInfo.shared.build))"
         self.versionLabel.font = UIFont.monospacedApplicationFont(ofSize: 13, weight: .medium)
-        self.versionLabel.textColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0).withAlphaComponent(0.8)
+        self.versionLabel.textColor = Theme.subtleAccentColour
         self.versionLabel.textAlignment = .center
 
         let stackView = UIStackView(arrangedSubviews: [
@@ -129,10 +132,6 @@ class SettingsViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32).isActive = true
         stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
-
-        self.view.backgroundColor = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1)
-
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: Actions.handleCloseButtonPress)
     }
 
     @objc func handleCloseButtonPress(_ sender: AnyObject?) {
@@ -148,7 +147,6 @@ class SettingsViewController: UIViewController {
         let url = URL(string: "https://github.com/brushedtype/Ratios")!
         let safariViewController = SFSafariViewController(url: url)
         self.navigationController?.present(safariViewController, animated: true, completion: nil)
-//        self.present(safariViewController, animated: true, completion: nil)
     }
 
     @objc func handleFontButtonPress(_ sender: AnyObject?) {
