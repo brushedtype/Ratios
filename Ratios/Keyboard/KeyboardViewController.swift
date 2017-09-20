@@ -23,28 +23,22 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = Theme.backgroundColour
-
-        let keys = KeyboardSection(sectionSubviews: self.rows.map { (values) -> UIView in
-            let buttons = values.map({ buttonValue -> KeyboardButton in
-                let button = KeyboardButton(buttonValue: buttonValue)
-                button.addTarget(self, action: #selector(self.handleKeyPress(_:)), for: .touchUpInside)
-                return button
-            })
-            return KeyboardSection(sectionSubviews: buttons, direction: .horizontal)
-        }, direction: .vertical)
-
-        self.view.addSubview(keys)
-        keys.translatesAutoresizingMaskIntoConstraints = false
-        keys.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
-        keys.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        keys.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        if #available(iOS 11.0, *) {
-            keys.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
-        } else {
-            keys.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
-        }
-
         self.view.translatesAutoresizingMaskIntoConstraints = false
+
+        let keyboardRows = self.rows.map({ KeyboardViewController.createKeyboardRow(buttonValues: $0) })
+        let keyboardView = KeyboardSection(sectionSubviews: keyboardRows, direction: .vertical)
+
+        self.view.addSubview(keyboardView)
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
+        keyboardView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+
+        if #available(iOS 11.0, *) {
+            keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
+        } else {
+            keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+        }
     }
 
     @objc func handleKeyPress(_ sender: AnyObject?) {
@@ -58,6 +52,21 @@ class KeyboardViewController: UIInputViewController {
         case .literal(let value):
             self.textDocumentProxy.insertText(value)
         }
+    }
+
+    static func createKeyboardButton(buttonValue: KeyboardButtonValue) -> KeyboardButton {
+        let button = KeyboardButton(buttonValue: buttonValue)
+        button.addTarget(self, action: #selector(self.handleKeyPress(_:)), for: .touchUpInside)
+
+        return button
+    }
+
+    static func createKeyboardRow(buttonValues: [KeyboardButtonValue]) -> KeyboardSection {
+        let buttons = buttonValues.map({ value in
+            return KeyboardViewController.createKeyboardButton(buttonValue: value)
+        })
+
+        return KeyboardSection(sectionSubviews: buttons, direction: .horizontal)
     }
 
 }
