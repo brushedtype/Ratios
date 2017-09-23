@@ -56,11 +56,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         overlayView.backgroundColor = .black
         overlayView.alpha = 0
 
-        if let snapshotView = fromVC.view.snapshotView(afterScreenUpdates: true) {
-            snapshotView.addSubview(overlayView)
-            transitionContext.containerView.addSubview(snapshotView)
-        }
-
+        transitionContext.containerView.addSubview(overlayView)
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.bringSubview(toFront: toVC.view)
 
@@ -87,11 +83,15 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let exitFrame = fromVC.view.frame
         let viewsToRemove = transitionContext.containerView.subviews
 
+        toVC.view.frame = transitionContext.containerView.frame
+
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.sendSubview(toBack: toVC.view)
 
-        UIView.animate(withDuration: duration) {
-            for view in viewsToRemove {
+        for view in viewsToRemove {
+            view.frame = transitionContext.containerView.frame
+
+            UIView.animate(withDuration: duration) {
                 view.alpha = 0
             }
         }

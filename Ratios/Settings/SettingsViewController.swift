@@ -129,9 +129,14 @@ class SettingsViewController: UIViewController {
 
         self.view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32).isActive = true
         stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32).isActive = true
+        } else {
+            stackView.widthAnchor.constraint(lessThanOrEqualToConstant: 480).isActive = true
+        }
     }
 
     @objc func handleCloseButtonPress(_ sender: AnyObject?) {

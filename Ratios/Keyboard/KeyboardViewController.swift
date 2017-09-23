@@ -41,7 +41,7 @@ class KeyboardViewController: UIInputViewController {
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        keyboardView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        keyboardView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
 
         if #available(iOS 11.0, *) {
             keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
