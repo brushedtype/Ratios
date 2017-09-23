@@ -11,10 +11,16 @@ import Foundation
 struct Calculator {
 
     static func calculateGrounds(brew: Double, ratio: Int) -> Double {
+        guard ratio > 2 else {
+            return 0
+        }
         return brew / Double(ratio - 2)
     }
 
     static func calculateGrounds(water: Double, ratio: Int) -> Double {
+        guard ratio > 0 else {
+            return 0
+        }
         return water / Double(ratio)
     }
 
