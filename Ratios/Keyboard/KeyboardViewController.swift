@@ -39,9 +39,15 @@ class KeyboardViewController: UIInputViewController {
 
         self.view.addSubview(keyboardView)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        keyboardView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
-        keyboardView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
-        keyboardView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+        keyboardView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            keyboardView.heightAnchor.constraint(equalToConstant: 280).isActive = true
+            keyboardView.widthAnchor.constraint(equalToConstant: 580).isActive = true
+        } else {
+            keyboardView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+            keyboardView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -16).isActive = true
+        }
 
         if #available(iOS 11.0, *) {
             keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true

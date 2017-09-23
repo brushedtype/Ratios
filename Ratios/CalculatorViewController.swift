@@ -33,6 +33,9 @@ class CalculatorViewController: UIViewController {
     let waterInputView = LabelInputView(label: "WATER (ML)", initialValue: "0")
     let groundsInputView = LabelInputView(label: "GROUNDS (G)", initialValue: "0")
 
+    var stackView: UIStackView? = nil
+    var stackViewWidthConstraint: NSLayoutConstraint? = nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +70,10 @@ class CalculatorViewController: UIViewController {
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8).isActive = true
-        stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+        self.stackView = stackView
+        self.updateWidthConstraint()
 
         self.totalInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
         self.waterInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
@@ -90,6 +95,24 @@ class CalculatorViewController: UIViewController {
         super.viewDidAppear(animated)
 
         self.totalInputView.textField.becomeFirstResponder()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        self.updateWidthConstraint()
+    }
+
+    func updateWidthConstraint() {
+        self.stackViewWidthConstraint?.isActive = false
+
+        if self.traitCollection.horizontalSizeClass == .compact {
+            self.stackViewWidthConstraint = self.stackView?.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -16)
+        } else {
+            self.stackViewWidthConstraint = self.stackView?.widthAnchor.constraint(equalToConstant: 580)
+        }
+
+        self.stackViewWidthConstraint?.isActive = true
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
