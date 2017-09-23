@@ -8,6 +8,12 @@
 
 import UIKit
 
+fileprivate struct Actions {
+    private init() {}
+
+    static let handleKeyPress = #selector(KeyboardViewController.handleKeyPress(_:))
+}
+
 class KeyboardViewController: UIInputViewController {
 
     static let shared = KeyboardViewController()
@@ -25,7 +31,10 @@ class KeyboardViewController: UIInputViewController {
         self.view.backgroundColor = Theme.backgroundColour
         self.view.translatesAutoresizingMaskIntoConstraints = false
 
-        let keyboardRows = self.rows.map({ KeyboardViewController.createKeyboardRow(buttonValues: $0) })
+        let keyboardRows = self.rows.map({ [unowned self] buttonValues in
+            return KeyboardViewController.createKeyboardRow(buttonValues: buttonValues, keyPressHandler: self)
+        })
+
         let keyboardView = KeyboardSection(sectionSubviews: keyboardRows, direction: .vertical)
 
         self.view.addSubview(keyboardView)
@@ -54,16 +63,16 @@ class KeyboardViewController: UIInputViewController {
         }
     }
 
-    static func createKeyboardButton(buttonValue: KeyboardButtonValue) -> KeyboardButton {
+    static func createKeyboardButton(buttonValue: KeyboardButtonValue, keyPressHandler: Any) -> KeyboardButton {
         let button = KeyboardButton(buttonValue: buttonValue)
-        button.addTarget(self, action: #selector(self.handleKeyPress(_:)), for: .touchUpInside)
+        button.addTarget(keyPressHandler, action: Actions.handleKeyPress, for: .touchUpInside)
 
         return button
     }
 
-    static func createKeyboardRow(buttonValues: [KeyboardButtonValue]) -> KeyboardSection {
+    static func createKeyboardRow(buttonValues: [KeyboardButtonValue], keyPressHandler: Any) -> KeyboardSection {
         let buttons = buttonValues.map({ value in
-            return KeyboardViewController.createKeyboardButton(buttonValue: value)
+            return KeyboardViewController.createKeyboardButton(buttonValue: value, keyPressHandler: keyPressHandler)
         })
 
         return KeyboardSection(sectionSubviews: buttons, direction: .horizontal)
