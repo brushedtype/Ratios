@@ -49,8 +49,6 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         toVC.view.alpha = 0
         toVC.view.frame = entryFrame.offsetBy(dx: 0, dy: entryFrame.height)
-        toVC.view.layer.cornerRadius = 8
-        toVC.view.clipsToBounds = true
 
         let overlayView = UIView(frame: fromVC.view.frame)
         overlayView.backgroundColor = .black

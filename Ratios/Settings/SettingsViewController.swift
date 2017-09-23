@@ -33,6 +33,9 @@ class SettingsViewController: UIViewController {
 
     let versionLabel = UILabel(frame: .zero)
 
+    var stackView = UIStackView(frame: .zero)
+    var widthConstraint: NSLayoutConstraint? = nil
+
 
     override func loadView() {
         self.view = self.scrollView
@@ -115,28 +118,40 @@ class SettingsViewController: UIViewController {
         self.versionLabel.textColor = Theme.subtleAccentColour
         self.versionLabel.textAlignment = .center
 
-        let stackView = UIStackView(arrangedSubviews: [
-            self.titleLabel,
-            aboutStackView,
-            fontStackView,
-            self.versionLabel
-        ])
+        self.stackView.axis = .vertical
+        self.stackView.alignment = .center
+        self.stackView.distribution = .equalSpacing
+        self.stackView.spacing = 32
 
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 32
+        self.stackView.addArrangedSubview(self.titleLabel)
+        self.stackView.addArrangedSubview(aboutStackView)
+        self.stackView.addArrangedSubview(fontStackView)
+        self.stackView.addArrangedSubview(self.versionLabel)
 
-        self.view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.view.addSubview(self.stackView)
+        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+        self.stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32).isActive = true
+        self.updateWidthConstraint()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        self.updateWidthConstraint()
+    }
+
+    func updateWidthConstraint() {
+        self.widthConstraint?.isActive = false
+
+        if self.traitCollection.horizontalSizeClass == .compact {
+            self.widthConstraint = self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -32)
         } else {
-            stackView.widthAnchor.constraint(lessThanOrEqualToConstant: 480).isActive = true
+            self.widthConstraint = self.stackView.widthAnchor.constraint(lessThanOrEqualToConstant: 480)
         }
+
+        self.widthConstraint?.isActive = true
     }
 
     @objc func handleCloseButtonPress(_ sender: AnyObject?) {
