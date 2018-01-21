@@ -28,7 +28,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = Theme.backgroundColour
+        self.updateBackgroundColor(Theme.backgroundColour)
         self.view.translatesAutoresizingMaskIntoConstraints = false
 
         let keyboardRows = self.rows.map({ [unowned self] buttonValues in
@@ -54,6 +54,10 @@ class KeyboardViewController: UIInputViewController {
         } else {
             keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
         }
+    }
+    
+    func updateBackgroundColor(_ color: UIColor) {
+        self.view.backgroundColor = color
     }
 
     @objc func handleKeyPress(_ sender: AnyObject?) {
