@@ -1,5 +1,12 @@
 # Contributing to Ratios
 
+## Code of Conduct
+
+This project is released with a Contributor Code of Conduct. By
+participating in this project you agree to abide by its terms.
+
+See [CODE\_OF\_CONDUCT.md](./CODE_OF_CONDUCT.md) for full details.
+
 ## Developer's Certificate of Origin 1.1
 
 By making a contribution to this project, I certify that:
