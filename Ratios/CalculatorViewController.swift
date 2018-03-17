@@ -118,11 +118,11 @@ class CalculatorViewController: UIViewController {
     }
     
     func updateBackgroundColor(_ ratio: Int, duration: TimeInterval = 0.15) {
-        UIView.animate(withDuration: duration) {
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
             let newBackgroundColor = BrewStrengthColor.colorFor(ratio)
             self.view.backgroundColor = newBackgroundColor
             KeyboardViewController.shared.updateBackgroundColor(newBackgroundColor)
-        }
+        }, completion: nil)
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
