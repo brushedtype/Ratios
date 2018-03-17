@@ -118,7 +118,7 @@ class CalculatorViewController: UIViewController {
     }
     
     func updateBackgroundColor(_ ratio: Int, duration: TimeInterval = 0.15) {
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
             let newBackgroundColor = BrewStrengthColor.colorFor(ratio)
             self.view.backgroundColor = newBackgroundColor
             KeyboardViewController.shared.updateBackgroundColor(newBackgroundColor)
