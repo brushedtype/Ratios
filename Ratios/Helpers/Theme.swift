@@ -19,7 +19,7 @@ struct Theme {
     static let keyboardButtonHighlightColour = UIColor(red:0.77, green:0.70, blue:0.63, alpha:1.0)
 
     /// The application background colour
-    static let backgroundColour = UIColor(red: 0.87256, green: 0.79711, blue: 0.71713, alpha: 1.0)
+    static let backgroundColour = UIColor(red:0.90, green:0.81, blue:0.72, alpha:1.0)
 
     /// The application tint and text colour
     static let accentColour = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)

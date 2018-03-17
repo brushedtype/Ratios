@@ -88,6 +88,8 @@ class CalculatorViewController: UIViewController {
             self.groundsInputView.textField.text = formatDoubleToString(values.grounds)
             self.waterInputView.textField.text = formatDoubleToString(water)
             self.totalInputView.textField.text = formatDoubleToString(brew)
+            
+            self.updateBackgroundColor(values.ratio)
         }
     }
 
@@ -113,6 +115,14 @@ class CalculatorViewController: UIViewController {
         }
 
         self.stackViewWidthConstraint?.isActive = true
+    }
+    
+    func updateBackgroundColor(_ ratio: Int, duration: TimeInterval = 0.15) {
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
+            let newBackgroundColor = BrewStrengthColor.colorFor(ratio)
+            self.view.backgroundColor = newBackgroundColor
+            KeyboardViewController.shared.updateBackgroundColor(newBackgroundColor)
+        }, completion: nil)
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
@@ -148,6 +158,7 @@ class CalculatorViewController: UIViewController {
             break
         }
 
+        self.updateBackgroundColor(ratio)
         self.persistenceStore?.save(grounds: grounds, ratio: ratio)
     }
 

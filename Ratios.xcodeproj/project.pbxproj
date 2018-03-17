@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BE39664205D68D7006F0D76 /* BrewStrengthColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE39663205D68D7006F0D76 /* BrewStrengthColor.swift */; };
 		BC0B331A1F72FCA80043719D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B33191F72FCA80043719D /* Theme.swift */; };
 		BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */; };
 		BC57D88B1F52042A00A4ED41 /* Tofino-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC57D87B1F5203F600A4ED41 /* Tofino-Black.otf */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BE39663205D68D7006F0D76 /* BrewStrengthColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewStrengthColor.swift; sourceTree = "<group>"; };
 		BC0B33191F72FCA80043719D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BC57D8631F51DF9A00A4ED41 /* LabelInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelInputView.swift; sourceTree = "<group>"; };
 		BC57D87A1F5203F600A4ED41 /* Tofino-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino-BookItalic.otf"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				BCEBCDB01F6D8C1D00805050 /* Assets.swift */,
 				BC57D89E1F5242BB00A4ED41 /* PersistenceStore.swift */,
 				BCEBCDB21F6DA89600805050 /* AppInfo.swift */,
+				1BE39663205D68D7006F0D76 /* BrewStrengthColor.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */,
 				BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */,
 				BC8A674F1F519E8400A7E627 /* Calculator.swift in Sources */,
+				1BE39664205D68D7006F0D76 /* BrewStrengthColor.swift in Sources */,
 				BC98F38D1F5C7BD800F6E1D4 /* KeyboardSection.swift in Sources */,
 				BC0B331A1F72FCA80043719D /* Theme.swift in Sources */,
 			);
