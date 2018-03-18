@@ -12,25 +12,25 @@ struct Theme {
     private init() {}
 
 
-    /// The normal keyboard button colour
-    static let keyboardButtonColour = UIColor(red:0.99, green:0.99, blue:0.98, alpha:1.0)
+    /// The normal keyboard button color
+    static let keyboardButtonColor = UIColor(red:0.99, green:0.99, blue:0.98, alpha:1.0)
 
-    /// The active/highlighted keyboard button colour
-    static let keyboardButtonHighlightColour = UIColor(red:0.77, green:0.70, blue:0.63, alpha:1.0)
+    /// The active/highlighted keyboard button color
+    static let keyboardButtonHighlightColor = UIColor(red:0.77, green:0.70, blue:0.63, alpha:1.0)
 
-    /// The application background colour
-    static let backgroundColour = UIColor(red:0.90, green:0.81, blue:0.72, alpha:1.0)
+    /// The application background color
+    static let backgroundColor = UIColor(red:0.90, green:0.81, blue:0.72, alpha:1.0)
 
-    /// The application tint and text colour
-    static let accentColour = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
+    /// The application tint and text color
+    static let accentColor = UIColor(red:0.31, green:0.28, blue:0.25, alpha:1.0)
 
-    /// A subtle version of the application text colour
-    static let subtleAccentColour  = Theme.accentColour.withAlphaComponent(0.8)
+    /// A subtle version of the application text color
+    static let subtleAccentColor  = Theme.accentColor.withAlphaComponent(0.8)
 
-    /// The bordered button colour
-    static let buttonHighlightColour = Theme.accentColour.withAlphaComponent(0.4)
+    /// The bordered button color
+    static let buttonHighlightColor = Theme.accentColor.withAlphaComponent(0.4)
 
-    /// The application shadow colour
-    static let shadowColour = UIColor.black
+    /// The application shadow color
+    static let shadowColor = UIColor.black
 
 }

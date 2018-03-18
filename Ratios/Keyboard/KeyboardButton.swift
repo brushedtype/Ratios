@@ -19,8 +19,8 @@ class KeyboardButton: UIButton {
 
     var animator: UIViewPropertyAnimator? = nil
 
-    var normalBackgroundColor = Theme.keyboardButtonColour
-    var activeBackgroundColor = Theme.keyboardButtonHighlightColour
+    var normalBackgroundColor = Theme.keyboardButtonColor
+    var activeBackgroundColor = Theme.keyboardButtonHighlightColor
 
 
     init(buttonValue: KeyboardButtonValue) {
@@ -35,12 +35,12 @@ class KeyboardButton: UIButton {
         case .literal(let value):
             let attributedString = NSAttributedString(string: value, attributes: [
                 .font: UIFont.applicationFont(ofSize: 22, weight: .medium),
-                .foregroundColor: Theme.accentColour
+                .foregroundColor: Theme.accentColor
             ])
             self.setAttributedTitle(attributedString, for: .normal)
         }
 
-        self.tintColor = Theme.accentColour
+        self.tintColor = Theme.accentColor
         self.backgroundColor = self.normalBackgroundColor
 
         self.contentHorizontalAlignment = .center
@@ -52,7 +52,7 @@ class KeyboardButton: UIButton {
 
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = false
-        self.layer.shadowColor = Theme.shadowColour.cgColor
+        self.layer.shadowColor = Theme.shadowColor.cgColor
         self.layer.shadowRadius = 3
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 0.15
