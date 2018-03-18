@@ -45,18 +45,18 @@ class SettingsViewController: UIViewController {
         self.navigationItem.title = ""
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: Actions.handleCloseButtonPress)
 
-        self.view.backgroundColor = Theme.backgroundColour
+        self.view.backgroundColor = Theme.backgroundColor
 
         self.titleLabel.text = "Ratios"
         self.titleLabel.font = UIFont.applicationFont(ofSize: 48, weight: .thin)
-        self.titleLabel.textColor = Theme.accentColour
+        self.titleLabel.textColor = Theme.accentColor
 
         self.aboutTextView.text = """
         Ratios is free and open source. If there's a feature you think's missing, \
         or something doesn't work right, you can help improve the app on GitHub.
         """
         self.aboutTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
-        self.aboutTextView.textColor = Theme.accentColour
+        self.aboutTextView.textColor = Theme.accentColor
         self.aboutTextView.isScrollEnabled = false
         self.aboutTextView.isEditable = false
         self.aboutTextView.isSelectable = false
@@ -80,7 +80,7 @@ class SettingsViewController: UIViewController {
         Support Alanna's work, and consider using Tofino in your own projects.
         """
         self.fontTextView.font = UIFont.applicationFont(ofSize: 16, weight: .light)
-        self.fontTextView.textColor = Theme.accentColour
+        self.fontTextView.textColor = Theme.accentColor
         self.fontTextView.isScrollEnabled = false
         self.fontTextView.isEditable = false
         self.fontTextView.isSelectable = false
@@ -112,7 +112,7 @@ class SettingsViewController: UIViewController {
 
         self.versionLabel.text = "\(AppInfo.shared.name) v\(AppInfo.shared.version) (\(AppInfo.shared.build))"
         self.versionLabel.font = UIFont.monospacedApplicationFont(ofSize: 13, weight: .medium)
-        self.versionLabel.textColor = Theme.subtleAccentColour
+        self.versionLabel.textColor = Theme.subtleAccentColor
         self.versionLabel.textAlignment = .center
 
         let stackView = UIStackView(arrangedSubviews: [

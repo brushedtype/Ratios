@@ -43,7 +43,7 @@ class CalculatorViewController: UIViewController {
         self.title = "Ratios"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Assets.settingsCog, style: .plain, target: self, action: Actions.handleSettingsButtonPress)
 
-        self.view.backgroundColor = Theme.backgroundColour
+        self.view.backgroundColor = Theme.backgroundColor
 
         let topView = UIStackView(arrangedSubviews: [
             self.ratioInputView,

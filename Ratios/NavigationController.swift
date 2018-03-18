@@ -33,12 +33,12 @@ class NavigationController: UINavigationController {
             .font: UIFont.applicationFont(ofSize: 17),
         ], for: .highlighted)
 
-        self.navigationBar.tintColor = Theme.accentColour
+        self.navigationBar.tintColor = Theme.accentColor
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.titleTextAttributes = [
             .font: UIFont.applicationFont(ofSize: 17, weight: .medium),
-            .foregroundColor: Theme.accentColour
+            .foregroundColor: Theme.accentColor
         ]
     }
 

@@ -28,7 +28,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.updateBackgroundColor(Theme.backgroundColour)
+        self.updateBackgroundColor(Theme.backgroundColor)
         self.view.translatesAutoresizingMaskIntoConstraints = false
 
         let keyboardRows = self.rows.map({ [unowned self] buttonValues in
