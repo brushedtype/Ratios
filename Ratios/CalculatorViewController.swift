@@ -97,6 +97,11 @@ class CalculatorViewController: UIViewController {
         super.viewDidAppear(animated)
 
         self.totalInputView.textField.becomeFirstResponder()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // increment use every time screen appears
+            ReviewHelper.shared.incrementUse(.low)
+        }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

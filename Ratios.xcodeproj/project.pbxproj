@@ -39,6 +39,7 @@
 		BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */; };
 		BC98F3921F6417BC00F6E1D4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3911F6417BC00F6E1D4 /* NavigationController.swift */; };
 		BC98F3941F642A6E00F6E1D4 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */; };
+		BCDDB4792061CA40008D27F3 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDB4782061CA40008D27F3 /* ReviewHelper.swift */; };
 		BCEBCDAF1F6D8BDF00805050 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */; };
 		BCEBCDB11F6D8C1D00805050 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB01F6D8C1D00805050 /* Assets.swift */; };
 		BCEBCDB31F6DA89600805050 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB21F6DA89600805050 /* AppInfo.swift */; };
@@ -81,6 +82,7 @@
 		BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BC98F3911F6417BC00F6E1D4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		BCDDB4782061CA40008D27F3 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
 		BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BCEBCDB01F6D8C1D00805050 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		BCEBCDB21F6DA89600805050 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				BC0B33191F72FCA80043719D /* Theme.swift */,
+				BCDDB4782061CA40008D27F3 /* ReviewHelper.swift */,
 				BC8A674E1F519E8400A7E627 /* Calculator.swift */,
 				BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */,
 				BCEBCDB01F6D8C1D00805050 /* Assets.swift */,
@@ -327,6 +330,7 @@
 				BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */,
 				BCEBCDB51F6DB3DE00805050 /* RoundedButton.swift in Sources */,
 				BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */,
+				BCDDB4792061CA40008D27F3 /* ReviewHelper.swift in Sources */,
 				BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */,
 				BC8A674F1F519E8400A7E627 /* Calculator.swift in Sources */,
 				1BE39664205D68D7006F0D76 /* BrewStrengthColor.swift in Sources */,
