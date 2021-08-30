@@ -32,18 +32,18 @@
 		BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6739E51E23BDEC005399BF /* CalculatorViewController.swift */; };
 		BC6739EB1E23BDEC005399BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6739EA1E23BDEC005399BF /* Assets.xcassets */; };
 		BC6739EE1E23BDEC005399BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6739EC1E23BDEC005399BF /* LaunchScreen.storyboard */; };
+		BC8609A426DCDC68000CB223 /* KeyboardButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8609A326DCDC68000CB223 /* KeyboardButtonStyle.swift */; };
+		BC8609A626DCDC83000CB223 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8609A526DCDC83000CB223 /* KeyboardView.swift */; };
 		BC8A674F1F519E8400A7E627 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8A674E1F519E8400A7E627 /* Calculator.swift */; };
-		BC98F3891F5B179500F6E1D4 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */; };
+		BC8D42A026DCE9E700E8BBDC /* RoundedSettingsButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D429F26DCE9E700E8BBDC /* RoundedSettingsButtonStyle.swift */; };
+		BC8D42A226DCEA3600E8BBDC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D42A126DCEA3600E8BBDC /* SettingsView.swift */; };
 		BC98F38B1F5C7BA900F6E1D4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */; };
-		BC98F38D1F5C7BD800F6E1D4 /* KeyboardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38C1F5C7BD800F6E1D4 /* KeyboardSection.swift */; };
 		BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */; };
 		BC98F3921F6417BC00F6E1D4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3911F6417BC00F6E1D4 /* NavigationController.swift */; };
-		BC98F3941F642A6E00F6E1D4 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */; };
 		BCDDB4792061CA40008D27F3 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDDB4782061CA40008D27F3 /* ReviewHelper.swift */; };
 		BCEBCDAF1F6D8BDF00805050 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */; };
 		BCEBCDB11F6D8C1D00805050 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB01F6D8C1D00805050 /* Assets.swift */; };
 		BCEBCDB31F6DA89600805050 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB21F6DA89600805050 /* AppInfo.swift */; };
-		BCEBCDB51F6DB3DE00805050 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBCDB41F6DB3DE00805050 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,18 +75,18 @@
 		BC6739EA1E23BDEC005399BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC6739ED1E23BDEC005399BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC6739EF1E23BDEC005399BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC8609A326DCDC68000CB223 /* KeyboardButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButtonStyle.swift; sourceTree = "<group>"; };
+		BC8609A526DCDC83000CB223 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		BC8A674E1F519E8400A7E627 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		BC8D429F26DCE9E700E8BBDC /* RoundedSettingsButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSettingsButtonStyle.swift; sourceTree = "<group>"; };
+		BC8D42A126DCEA3600E8BBDC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BC98F38A1F5C7BA900F6E1D4 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
-		BC98F38C1F5C7BD800F6E1D4 /* KeyboardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSection.swift; sourceTree = "<group>"; };
 		BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BC98F3911F6417BC00F6E1D4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		BCDDB4782061CA40008D27F3 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
 		BCEBCDAE1F6D8BDF00805050 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BCEBCDB01F6D8C1D00805050 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		BCEBCDB21F6DA89600805050 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
-		BCEBCDB41F6DB3DE00805050 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				BC57D89C1F522F9E00A4ED41 /* KeyboardViewController.swift */,
-				BC98F38C1F5C7BD800F6E1D4 /* KeyboardSection.swift */,
-				BC98F3881F5B179500F6E1D4 /* KeyboardButton.swift */,
+				BC8609A526DCDC83000CB223 /* KeyboardView.swift */,
+				BC8609A326DCDC68000CB223 /* KeyboardButtonStyle.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -179,9 +179,9 @@
 		BC98F38E1F5CA36F00F6E1D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BC98F3931F642A6E00F6E1D4 /* TransitionAnimator.swift */,
 				BC98F38F1F5CA37F00F6E1D4 /* SettingsViewController.swift */,
-				BCEBCDB41F6DB3DE00805050 /* RoundedButton.swift */,
+				BC8D42A126DCEA3600E8BBDC /* SettingsView.swift */,
+				BC8D429F26DCE9E700E8BBDC /* RoundedSettingsButtonStyle.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -254,6 +254,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -318,24 +319,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCEBCDAF1F6D8BDF00805050 /* Fonts.swift in Sources */,
-				BC98F3941F642A6E00F6E1D4 /* TransitionAnimator.swift in Sources */,
+				BC8D42A026DCE9E700E8BBDC /* RoundedSettingsButtonStyle.swift in Sources */,
+				BC8609A426DCDC68000CB223 /* KeyboardButtonStyle.swift in Sources */,
 				BC98F38B1F5C7BA900F6E1D4 /* InputTextField.swift in Sources */,
 				BC98F3921F6417BC00F6E1D4 /* NavigationController.swift in Sources */,
 				BC6739E61E23BDEC005399BF /* CalculatorViewController.swift in Sources */,
 				BCEBCDB31F6DA89600805050 /* AppInfo.swift in Sources */,
-				BC98F3891F5B179500F6E1D4 /* KeyboardButton.swift in Sources */,
 				BC98F3901F5CA37F00F6E1D4 /* SettingsViewController.swift in Sources */,
+				BC8609A626DCDC83000CB223 /* KeyboardView.swift in Sources */,
 				BC57D89D1F522F9E00A4ED41 /* KeyboardViewController.swift in Sources */,
 				BCEBCDB11F6D8C1D00805050 /* Assets.swift in Sources */,
 				BC6739E41E23BDEC005399BF /* AppDelegate.swift in Sources */,
-				BCEBCDB51F6DB3DE00805050 /* RoundedButton.swift in Sources */,
 				BC57D89F1F5242BB00A4ED41 /* PersistenceStore.swift in Sources */,
 				BCDDB4792061CA40008D27F3 /* ReviewHelper.swift in Sources */,
 				BC57D8641F51DF9A00A4ED41 /* LabelInputView.swift in Sources */,
 				BC8A674F1F519E8400A7E627 /* Calculator.swift in Sources */,
 				1BE39664205D68D7006F0D76 /* BrewStrengthColor.swift in Sources */,
-				BC98F38D1F5C7BD800F6E1D4 /* KeyboardSection.swift in Sources */,
 				BC0B331A1F72FCA80043719D /* Theme.swift in Sources */,
+				BC8D42A226DCEA3600E8BBDC /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +463,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y7X6QXE884;
 				INFOPLIST_FILE = Ratios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = co.brushedtype.Ratios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -476,7 +479,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y7X6QXE884;
 				INFOPLIST_FILE = Ratios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = co.brushedtype.Ratios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

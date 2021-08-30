@@ -43,15 +43,3 @@ class NavigationController: UINavigationController {
     }
 
 }
-
-extension NavigationController: UIViewControllerTransitioningDelegate {
-
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TransitionAnimator(transition: .presenting)
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TransitionAnimator(transition: .dismissing)
-    }
-
-}

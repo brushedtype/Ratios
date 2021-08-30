@@ -7,23 +7,16 @@
 //
 
 import UIKit
-
-fileprivate struct Actions {
-    private init() {}
-
-    static let handleKeyPress = #selector(KeyboardViewController.handleKeyPress(_:))
-}
+import SwiftUI
 
 class KeyboardViewController: UIInputViewController {
 
     static let shared = KeyboardViewController()
 
-    let rows: [[KeyboardButtonValue]] = [
-        [.literal("1"), .literal("2"), .literal("3")],
-        [.literal("4"), .literal("5"), .literal("6")],
-        [.literal("7"), .literal("8"), .literal("9")],
-        [.literal("."), .literal("0"), .delete]
-    ]
+    private lazy var hostingViewController = UIHostingController(rootView: KeyboardView(handleKeyPress: { [weak self] buttonValue in
+        self?.handleButtonPress(buttonValue)
+    }))
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +24,10 @@ class KeyboardViewController: UIInputViewController {
         self.updateBackgroundColor(Theme.backgroundColor)
         self.view.translatesAutoresizingMaskIntoConstraints = false
 
-        let keyboardRows = self.rows.map({ [unowned self] buttonValues in
-            return KeyboardViewController.createKeyboardRow(buttonValues: buttonValues, keyPressHandler: self)
-        })
+        self.addChildViewController(self.hostingViewController)
 
-        let keyboardView = KeyboardSection(sectionSubviews: keyboardRows, direction: .vertical)
+        let keyboardView = self.hostingViewController.view!
+        keyboardView.backgroundColor = .clear
 
         self.view.addSubview(keyboardView)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,43 +41,23 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1, constant: -16).isActive = true
         }
 
-        if #available(iOS 11.0, *) {
-            keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
-        } else {
-            keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
-        }
+        keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
+
+        self.hostingViewController.didMove(toParent: self)
     }
     
     func updateBackgroundColor(_ color: UIColor) {
         self.view.backgroundColor = color
     }
 
-    @objc func handleKeyPress(_ sender: AnyObject?) {
-        guard let button = sender as? KeyboardButton else {
-            return
-        }
 
-        switch button.buttonValue {
+    private func handleButtonPress(_ buttonValue: KeyboardButtonValue) {
+        switch buttonValue {
         case .delete:
             self.textDocumentProxy.deleteBackward()
         case .literal(let value):
             self.textDocumentProxy.insertText(value)
         }
-    }
-
-    static func createKeyboardButton(buttonValue: KeyboardButtonValue, keyPressHandler: Any) -> KeyboardButton {
-        let button = KeyboardButton(buttonValue: buttonValue)
-        button.addTarget(keyPressHandler, action: Actions.handleKeyPress, for: .touchUpInside)
-
-        return button
-    }
-
-    static func createKeyboardRow(buttonValues: [KeyboardButtonValue], keyPressHandler: Any) -> KeyboardSection {
-        let buttons = buttonValues.map({ value in
-            return KeyboardViewController.createKeyboardButton(buttonValue: value, keyPressHandler: keyPressHandler)
-        })
-
-        return KeyboardSection(sectionSubviews: buttons, direction: .horizontal)
     }
 
 }

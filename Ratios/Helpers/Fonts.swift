@@ -7,6 +7,41 @@
 //
 
 import UIKit
+import SwiftUI
+
+extension Font {
+
+    static func application(size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        switch weight {
+        case .regular:
+            return .custom("TofinoPersonal-Regular", size: size)
+        case .medium:
+            return .custom("TofinoPersonal-Medium", size: size)
+        case .light:
+            return .custom("TofinoPersonal-Book", size: size)
+        case .thin:
+            return .custom("TofinoPersonal-Light", size: size)
+        default:
+            return .custom("TofinoPersonal-Regular", size: size)
+        }
+    }
+
+    static func application(fixedSize size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        switch weight {
+        case .regular:
+            return .custom("TofinoPersonal-Regular", fixedSize: size)
+        case .medium:
+            return .custom("TofinoPersonal-Medium", fixedSize: size)
+        case .light:
+            return .custom("TofinoPersonal-Book", fixedSize: size)
+        case .thin:
+            return .custom("TofinoPersonal-Light", fixedSize: size)
+        default:
+            return .custom("TofinoPersonal-Regular", fixedSize: size)
+        }
+    }
+
+}
 
 extension UIFont {
 

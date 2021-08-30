@@ -26,6 +26,17 @@ fileprivate func formatDoubleToString(_ value: Double) -> String? {
 
 class CalculatorViewController: UIViewController {
 
+    enum InputType {
+        case ratio
+        case totalBrew
+        case grounds
+        case water
+    }
+
+    override var disablesAutomaticKeyboardDismissal: Bool {
+        return true
+    }
+
     var persistenceStore: PersistenceStore?
 
     let ratioInputView = LabelInputView(label: "RATIO", initialValue: "16")
@@ -35,6 +46,8 @@ class CalculatorViewController: UIViewController {
 
     var stackView: UIStackView? = nil
     var stackViewWidthConstraint: NSLayoutConstraint? = nil
+
+    private var currentInput: InputType = .totalBrew
 
 
     override func viewDidLoad() {
@@ -69,16 +82,16 @@ class CalculatorViewController: UIViewController {
         self.view.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 8).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 
         self.stackView = stackView
         self.updateWidthConstraint()
 
-        self.totalInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
-        self.waterInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
-        self.groundsInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
-        self.ratioInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: .editingChanged)
+        self.totalInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: [.editingChanged, .editingDidBegin])
+        self.waterInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: [.editingChanged, .editingDidBegin])
+        self.groundsInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: [.editingChanged, .editingDidBegin])
+        self.ratioInputView.textField.addTarget(self, action: Actions.handleFieldValueChange, for: [.editingChanged, .editingDidBegin])
 
         if let values = self.persistenceStore?.getValues() {
             let water = Calculator.calculateWater(grounds: values.grounds, ratio: values.ratio)
@@ -96,7 +109,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.totalInputView.textField.becomeFirstResponder()
+        self.beginInput()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // increment use every time screen appears
@@ -108,6 +121,19 @@ class CalculatorViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         self.updateWidthConstraint()
+    }
+
+    private func beginInput() {
+        switch self.currentInput {
+        case .totalBrew:
+            self.totalInputView.textField.becomeFirstResponder()
+        case .grounds:
+            self.groundsInputView.textField.becomeFirstResponder()
+        case .ratio:
+            self.ratioInputView.textField.becomeFirstResponder()
+        case .water:
+            self.waterInputView.textField.becomeFirstResponder()
+        }
     }
 
     func updateWidthConstraint() {
@@ -142,18 +168,32 @@ class CalculatorViewController: UIViewController {
 
         switch field {
         case self.totalInputView.textField:
+            self.currentInput = .totalBrew
+
             grounds = Calculator.calculateGrounds(brew: total, ratio: ratio)
             water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
             self.groundsInputView.textField.text = formatDoubleToString(grounds)
             self.waterInputView.textField.text = formatDoubleToString(water)
 
         case self.waterInputView.textField:
+            self.currentInput = .water
+
             grounds = Calculator.calculateGrounds(water: water, ratio: ratio)
             total = Calculator.calculateBrew(grounds: grounds, water: water)
             self.groundsInputView.textField.text = formatDoubleToString(grounds)
             self.totalInputView.textField.text = formatDoubleToString(total)
 
-        case self.groundsInputView.textField, self.ratioInputView.textField:
+        case self.groundsInputView.textField:
+            self.currentInput = .grounds
+
+            water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
+            total = Calculator.calculateBrew(grounds: grounds, water: water)
+            self.waterInputView.textField.text = formatDoubleToString(water)
+            self.totalInputView.textField.text = formatDoubleToString(total)
+
+        case self.ratioInputView.textField:
+            self.currentInput = .ratio
+
             water = Calculator.calculateWater(grounds: grounds, ratio: ratio)
             total = Calculator.calculateBrew(grounds: grounds, water: water)
             self.waterInputView.textField.text = formatDoubleToString(water)
@@ -168,16 +208,19 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleSettingsButtonPress(_ sender: AnyObject?) {
-        KeyboardViewController.shared.dismissKeyboard()
+        let settingsViewController = SettingsViewController(nibName: nil, bundle: nil)
+        let navigationController = NavigationController(rootViewController: settingsViewController)
+        navigationController.presentationController?.delegate = self
 
-        // add delay for keyboard to dismiss before presenting SettingsViewController
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            let settingsViewController = SettingsViewController(nibName: nil, bundle: nil)
-            let navigationController = NavigationController(rootViewController: settingsViewController)
-            navigationController.transitioningDelegate = navigationController
+        self.present(navigationController, animated: true, completion: nil)
+    }
 
-            self.present(navigationController, animated: true, completion: nil)
-        }
+}
+
+extension CalculatorViewController: UIAdaptivePresentationControllerDelegate {
+
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.beginInput()
     }
 
 }
