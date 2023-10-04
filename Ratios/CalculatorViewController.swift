@@ -148,7 +148,7 @@ class CalculatorViewController: UIViewController {
         self.stackViewWidthConstraint?.isActive = true
     }
     
-    func updateBackgroundColor(_ ratio: Int, duration: TimeInterval = 0.15) {
+    func updateBackgroundColor(_ ratio: Double, duration: TimeInterval = 0.15) {
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
             let newBackgroundColor = BrewStrengthColor.colorFor(ratio)
             self.view.backgroundColor = newBackgroundColor
@@ -157,7 +157,7 @@ class CalculatorViewController: UIViewController {
     }
 
     @objc func handleFieldValueChange(_ sender: AnyObject) {
-        let ratio = Int(self.ratioInputView.textField.text ?? "16") ?? 16
+        let ratio = Double(self.ratioInputView.textField.text ?? "16") ?? 16
         var total = Double(self.totalInputView.textField.text ?? "0") ?? 0
         var water = Double(self.waterInputView.textField.text ?? "0") ?? 0
         var grounds = Double(self.groundsInputView.textField.text ?? "0") ?? 0
